@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stelic Portfolio Delivery Roadmap</title>
+<style>
+  :root{
+    --navy:#1E2761;
+    --navy-700:#2A3676;
+    --bg:#F6F7F9;
+    --surface:#FFFFFF;
+    --ink:#1B2130;
+    --muted:#697089;
+    --line:#E4E7EE;
+    --line-strong:#CFD4E0;
+    --g1:#1E2761; --g2:#0066CC; --g3:#00A8E8; --g4:#00D084; --g5:#FFC107; --g6:#FF6B35; --hold:#9AA3B2;
+    --now:#E11D48;
+    --shadow:0 1px 2px rgba(20,28,54,.06), 0 8px 24px rgba(20,28,54,.08);
+    --radius:10px;
+    --cellw:62px;
+    --leftw:248px;
+    --noww:96px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:13px; line-height:1.4; -webkit-font-smoothing:antialiased;
+  }
+  header.app{
+    background:var(--surface); border-bottom:1px solid var(--line);
+    padding:16px 22px; display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+    position:sticky; top:0; z-index:60;
+  }
+  .brand{display:flex; align-items:baseline; gap:10px}
+  .brand .mark{
+    font-weight:800; letter-spacing:.14em; color:var(--navy); font-size:15px;
+  }
+  .brand .tag{color:var(--muted); font-size:11px; letter-spacing:.02em}
+  .title-block{margin-right:auto}
+  .title-block h1{font-size:16px; margin:0; font-weight:700; letter-spacing:-.01em}
+  .title-block p{margin:2px 0 0; color:var(--muted); font-size:12px}
+  .toolbar{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  button, .btn{
+    font:inherit; cursor:pointer; border:1px solid var(--line-strong);
+    background:var(--surface); color:var(--ink); padding:7px 11px; border-radius:8px;
+    display:inline-flex; align-items:center; gap:6px; transition:background .12s, border-color .12s, box-shadow .12s;
+  }
+  button:hover{background:#F0F2F6}
+  button:focus-visible, [tabindex]:focus-visible{outline:2px solid var(--navy); outline-offset:2px}
+  button.primary{background:var(--navy); border-color:var(--navy); color:#fff}
+  button.primary:hover{background:var(--navy-700)}
+  button.ghost{border-color:transparent; background:transparent}
+  button.ghost:hover{background:#EEF0F5}
+  .saved{font-size:11px; color:var(--muted); min-width:96px}
+  .saved b{color:#0F8A4E; font-weight:600}
+  .modepill{
+    font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; white-space:nowrap;
+    border:1px solid var(--line-strong); color:var(--muted); background:var(--surface);
+  }
+  .asof{font-size:12px; color:var(--muted); white-space:nowrap}
+  .asof b{color:var(--ink); font-weight:700; margin-left:3px}
+  .adminbtn{display:inline-flex; align-items:center; gap:7px; font-weight:600}
+  .adminbtn .ic{display:inline-flex}
+  .adminbtn .ic svg{display:block}
+  .adminbtn.locked{background:var(--navy); border-color:var(--navy); color:#fff}
+  .adminbtn.locked:hover{background:var(--navy-700)}
+  .adminbtn.unlocked{background:var(--surface); border-color:var(--line-strong); color:var(--ink)}
+  .adminbtn.unlocked:hover{background:#F0F2F6}
+  .modepill.admin{color:#0F8A4E; border-color:#9BE0BE; background:#F0FBF5}
+  .modepill.view{color:#8A5A00; border-color:#F3D68A; background:#FFF8E8}
+  .modepill.local{color:var(--muted)}
+  .toast{
+    position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px);
+    background:#1B2130; color:#fff; padding:10px 16px; border-radius:10px; font-size:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25); opacity:0; pointer-events:none; transition:opacity .18s, transform .18s; z-index:200;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+  .banner{display:none; background:#FFF8E8; border-bottom:1px solid #F3D68A; color:#8A5A00; font-size:12px; padding:8px 22px; line-height:1.4}
+  .banner.show{display:block}
+  .banner b{font-weight:700}
+  /* read-only (viewer) gating */
+  body.readonly #btnAdd, body.readonly #btnImport, body.readonly #btnReset{display:none}
+  body.readonly .ins-handle, body.readonly .del-handle, body.readonly .rowmenu-btn{display:none !important}
+  body.readonly .g-cell{cursor:default}
+  .pop.viewonly .editonly{display:none}
+  .pop.viewonly #popAdd{display:none}
+  #popComments{max-height:170px; overflow:auto; margin:2px 0 8px}
+  .cmtrow{border:1px solid var(--line); border-radius:8px; padding:7px 9px; margin-bottom:6px; background:#FAFBFC}
+  .cmtrow .cmttext{font-size:12px; white-space:pre-wrap; word-break:break-word}
+  .cmtrow .cmtmeta{font-size:10px; color:var(--muted); margin-top:4px; display:flex; gap:10px; align-items:center}
+  .cmtrow .cmtmeta a{color:#C0362C; cursor:pointer; text-decoration:underline}
+  #popComments .nocmt{color:var(--muted); font-size:11px; margin-bottom:8px}
+
+  .wrap{padding:18px 22px 40px}
+  .legend{
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:10px 14px; margin-bottom:14px; box-shadow:var(--shadow);
+  }
+  .legend .grp{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+  .chip{
+    display:inline-flex; align-items:center; gap:6px; padding:3px 9px; border-radius:999px;
+    font-size:11px; font-weight:600; color:#fff; white-space:nowrap;
+  }
+  .swatch{width:11px; height:11px; border-radius:3px; display:inline-block}
+  .legend .muted{color:var(--muted); font-size:11px}
+
+  .board{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); overflow:auto; max-height:calc(100vh - 220px);
+  }
+  /* CSS Grid roadmap: one shared set of column tracks for header and body,
+     so a header cell and a body cell in the same week are always the same column. */
+  .grid{display:grid; background:var(--surface); width:max-content; min-width:100%}
+  .grid > *{box-sizing:border-box}
+  .g-head{
+    position:sticky; top:0; z-index:30; background:var(--surface);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .g-corner{
+    position:sticky; left:0; top:0; z-index:40; background:var(--surface);
+    padding:8px 14px; border-bottom:1px solid var(--line-strong); border-right:1px solid var(--line);
+    display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .g-corner .h{font-weight:700; font-size:12px}
+  .g-corner .s{color:var(--muted); font-weight:500; font-size:11px}
+  .g-nowhead{
+    position:sticky; left:var(--leftw); top:0; z-index:40; background:var(--surface);
+    padding:8px 10px; font-size:11px; color:var(--muted); display:flex; align-items:flex-end;
+    border-bottom:1px solid var(--line-strong); border-right:1px solid var(--line-strong);
+  }
+  .g-weekhead{
+    padding:6px 4px 8px; text-align:center; border-left:1px solid var(--line);
+    font-weight:600; color:var(--ink); font-size:11px;
+  }
+  .g-weekhead .mo{display:block; height:13px; color:var(--muted); font-weight:700; font-size:9px; letter-spacing:.06em}
+  .g-weekhead.monthstart{border-left:2px solid var(--line-strong)}
+
+  .g-section{
+    grid-column:1 / -1; position:sticky; left:0; z-index:25; background:#F0F2F7; color:var(--navy);
+    font-weight:700; letter-spacing:.02em; padding:8px 14px; border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line); text-transform:uppercase; font-size:11px;
+  }
+  .g-section span{position:sticky; left:14px}
+
+  .g-proj{
+    position:sticky; left:0; z-index:20; background:var(--surface);
+    border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:8px 10px 8px 14px; overflow:hidden;
+  }
+  .g-proj .pname{display:flex; align-items:center; gap:6px}
+  .g-proj .pname .nm{font-weight:700; font-size:13px; outline:none; border-radius:4px; padding:1px 2px; min-width:0; word-break:break-word}
+  .g-proj .pname .nm:focus{background:#EEF2FF}
+  .g-proj .res{color:var(--muted); font-size:11px; outline:none; border-radius:4px; padding:0 2px}
+  .g-proj .res:focus{background:#EEF2FF}
+  .g-proj .dates{color:var(--muted); font-size:11px; margin-top:2px}
+  .rowmenu-btn{margin-left:auto; border:none; background:transparent; padding:2px 6px; color:var(--muted); border-radius:6px}
+  .rowmenu-btn:hover{background:#EEF0F5; color:var(--ink)}
+
+  .g-now{
+    position:sticky; left:var(--leftw); z-index:20; background:var(--surface);
+    border-right:1px solid var(--line-strong); border-bottom:1px solid var(--line);
+    padding:8px 10px;
+  }
+  .g-cell{
+    min-height:44px; border-left:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:3px; text-align:center; cursor:pointer; position:relative; background:var(--surface);
+  }
+  .g-cell.monthstart{border-left:2px solid var(--line-strong)}
+  .g-cell:hover{background:#F3F5F9}
+  .g-cell.selected{outline:2px solid var(--navy); outline-offset:-2px}
+  .gate{
+    display:flex; align-items:center; justify-content:center; height:100%; min-height:38px; border-radius:6px;
+    font-size:10px; font-weight:700; letter-spacing:.02em; color:#fff; user-select:none;
+  }
+  .gate.light{color:#12233A}
+  .note-dot{
+    position:absolute; top:3px; right:4px; width:7px; height:7px; border-radius:50%;
+    background:#fff; border:1.5px solid var(--navy); box-shadow:0 0 0 1px rgba(0,0,0,.08); z-index:16;
+  }
+  /* inline insert/remove handles */
+  .ins-handle{
+    position:absolute; top:0; bottom:0; right:-9px; width:18px; z-index:17;
+    display:flex; align-items:center; justify-content:center; padding:0; margin:0;
+    border:none; background:transparent; cursor:pointer; opacity:0;
+    transform:scale(.8); transition:opacity .14s ease, transform .14s ease;
+  }
+  .ins-handle::after{ /* insertion seam between the two weeks */
+    content:""; position:absolute; top:5px; bottom:5px; left:50%; width:2px; transform:translateX(-50%);
+    background:var(--navy); border-radius:2px; opacity:.2; transition:opacity .14s;
+  }
+  .ins-handle::before{ /* the round + button */
+    content:"+"; position:relative; z-index:1; width:21px; height:21px; border-radius:50%;
+    background:var(--navy); color:#fff; font-size:15px; font-weight:700; line-height:1;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 7px rgba(20,28,54,.32), 0 0 0 2px var(--surface);
+    transition:transform .14s ease, background .14s, box-shadow .14s;
+  }
+  .del-handle{
+    position:absolute; top:4px; left:4px; z-index:17; width:19px; height:19px; padding:0; margin:0;
+    border:1px solid var(--line-strong); border-radius:50%; background:var(--surface); color:var(--muted);
+    font-size:14px; font-weight:700; line-height:1; cursor:pointer; opacity:0; transform:scale(.8);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 1px 3px rgba(20,28,54,.16);
+    transition:opacity .14s ease, transform .14s ease, background .14s, color .14s, border-color .14s;
+  }
+  .g-cell:hover .ins-handle, .g-cell:hover .del-handle,
+  .ins-handle:focus-visible, .del-handle:focus-visible{opacity:1; transform:scale(1)}
+  .ins-handle:hover{transform:scale(1.06)}
+  .ins-handle:hover::before{background:var(--navy-700); transform:scale(1.12); box-shadow:0 4px 12px rgba(20,28,54,.4), 0 0 0 2px var(--surface)}
+  .ins-handle:hover::after{opacity:.5}
+  .del-handle:hover{background:#C0362C; border-color:#C0362C; color:#fff; transform:scale(1.12)}
+  .ins-handle:focus-visible{outline:none}
+  .ins-handle:focus-visible::before{box-shadow:0 0 0 2px var(--surface), 0 0 0 4px var(--navy)}
+  .del-handle:focus-visible{outline:2px solid #C0362C; outline-offset:2px}
+  @media (prefers-reduced-motion: reduce){
+    .ins-handle, .del-handle, .ins-handle::before, .ins-handle::after{transition:opacity .14s}
+    .g-cell:hover .ins-handle, .g-cell:hover .del-handle{transform:none}
+    .ins-handle:hover, .del-handle:hover, .ins-handle:hover::before{transform:none}
+  }
+
+  .nowchip{display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:11px}
+  .nowchip .sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+  .nowchip.mut{color:var(--muted); font-weight:600}
+  .prog{height:4px; background:#EDEFF4; border-radius:999px; margin-top:6px; overflow:hidden}
+  .prog > i{display:block; height:100%; background:var(--navy); border-radius:999px}
+
+  /* Popover */
+  .pop{
+    position:fixed; z-index:120; width:288px; background:var(--surface); border:1px solid var(--line-strong);
+    border-radius:12px; box-shadow:0 12px 40px rgba(20,28,54,.20); padding:12px; display:none;
+  }
+  .pop.open{display:block}
+  .pop h4{margin:0 0 2px; font-size:12px}
+  .pop .sub{color:var(--muted); font-size:11px; margin-bottom:10px}
+  .stepper{
+    display:flex; align-items:center; gap:8px; background:#F3F5FA; border:1px solid var(--line);
+    border-radius:12px; padding:8px 10px;
+  }
+  .stepper .lead{font-weight:700; font-size:12px; margin-right:auto}
+  .stepper button{
+    width:34px; height:34px; padding:0; justify-content:center; font-size:19px; font-weight:700;
+    border-radius:10px; border:1px solid var(--line-strong); background:#fff; line-height:1;
+    transition:transform .12s ease, background .12s, border-color .12s, box-shadow .12s;
+  }
+  .stepper button:active{transform:scale(.94)}
+  .stepper button.plus{background:var(--navy); border-color:var(--navy); color:#fff; box-shadow:0 2px 6px rgba(20,28,54,.28)}
+  .stepper button.plus:hover{background:var(--navy-700); box-shadow:0 4px 10px rgba(20,28,54,.34)}
+  .stepper button.minus{color:var(--ink)}
+  .stepper button.minus:hover{background:#fff; border-color:#C0362C; color:#C0362C}
+  .pop .lbl{font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:10px 0 6px}
+  .gatepick{display:grid; grid-template-columns:repeat(4,1fr); gap:6px}
+  .gatepick button{padding:6px 0; justify-content:center; font-size:11px; font-weight:700; color:#fff; border:none}
+  .gatepick button.light{color:#12233A}
+  .gatepick button.clear{background:#F0F2F6; color:var(--muted); font-weight:600}
+  .pop textarea{
+    width:100%; border:1px solid var(--line-strong); border-radius:8px; padding:8px; font:inherit; resize:vertical;
+    min-height:52px;
+  }
+  .pop .rowops{display:flex; align-items:center; gap:6px; margin-top:6px; flex-wrap:wrap}
+  .pop .rowops input[type=number]{width:52px; padding:5px 6px; border:1px solid var(--line-strong); border-radius:7px; font:inherit}
+  .pop .actions{display:flex; justify-content:space-between; margin-top:12px; gap:8px}
+  .num{width:52px; padding:5px 6px; border:1px solid var(--line-strong); border-radius:7px; font:inherit}
+  .small{font-size:11px}
+  .hint{color:var(--muted); font-size:10.5px; margin-top:4px}
+
+  /* Row menu */
+  .menu{
+    position:fixed; z-index:120; width:264px; background:var(--surface); border:1px solid var(--line-strong);
+    border-radius:12px; box-shadow:0 12px 40px rgba(20,28,54,.20); padding:8px; display:none;
+  }
+  .menu.open{display:block}
+  .menu .mrow{padding:6px 8px; border-radius:8px; display:flex; align-items:center; gap:8px; cursor:pointer}
+  .menu .mrow:hover{background:#F0F2F6}
+  .menu .shift{display:flex; flex-wrap:wrap; align-items:center; gap:6px; padding:6px 8px}
+  .menu .shift .lbl2{min-width:52px; font-size:12px; color:var(--muted)}
+  .menu .shift .num{flex:0 0 auto}
+  .menu .shift button{padding:5px 10px; flex:0 0 auto; white-space:nowrap}
+  .menu .sep{height:1px; background:var(--line); margin:6px 4px}
+  .menu .danger{color:#C0362C}
+
+  /* Drawer */
+  .scrim{position:fixed; inset:0; background:rgba(15,20,35,.28); z-index:110; display:none}
+  .scrim.open{display:block}
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:380px; max-width:90vw; background:var(--surface);
+    z-index:115; box-shadow:-12px 0 40px rgba(20,28,54,.18); transform:translateX(100%);
+    transition:transform .18s ease; display:flex; flex-direction:column;
+  }
+  .drawer.open{transform:none}
+  .drawer header{padding:16px 18px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:10px}
+  .drawer header h3{margin:0; font-size:14px}
+  .drawer .body{padding:10px 14px; overflow:auto}
+  .cmt{border:1px solid var(--line); border-radius:10px; padding:10px 12px; margin-bottom:10px}
+  .cmt .top{display:flex; align-items:center; gap:8px; margin-bottom:4px}
+  .cmt .top .p{font-weight:700}
+  .cmt .top .w{color:var(--muted); font-size:11px}
+  .cmt .txt{font-size:12px; white-space:pre-wrap}
+  .cmt .lnk{margin-top:6px; display:flex; gap:12px}
+  .cmt .lnk a{color:var(--navy); cursor:pointer; font-size:11px; text-decoration:underline}
+  .empty{color:var(--muted); font-size:12px; padding:20px 4px}
+
+  details.defs{margin-top:16px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+  details.defs summary{cursor:pointer; padding:12px 16px; font-weight:700; font-size:12px; list-style:none}
+  details.defs summary::-webkit-details-marker{display:none}
+  details.defs .cont{padding:0 16px 16px}
+  .defgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:10px}
+  .defcard{border:1px solid var(--line); border-radius:10px; padding:10px 12px}
+  .defcard .g{display:flex; align-items:center; gap:8px; font-weight:700; margin-bottom:4px}
+  .defcard p{margin:0; color:var(--muted); font-size:11.5px}
+  .notes{margin-top:12px; color:var(--muted); font-size:12px}
+  footer.app{padding:18px 22px; color:var(--muted); font-size:11px}
+  input[type=file]{display:none}
+  @media (prefers-reduced-motion: reduce){.drawer{transition:none}}
+</style>
+</head>
+<body>
+<header class="app">
+  <div class="brand"><span class="mark">STELIC</span><span class="tag">Insight, Action, Impact</span></div>
+  <div class="title-block">
+    <h1>Portfolio Delivery Roadmap</h1>
+    <p>Dashboard initiatives, weekly gate tracking, editable in place</p>
+  </div>
+  <div class="toolbar">
+    <span class="asof" id="asof"></span>
+    <span class="modepill" id="modepill"></span>
+    <span class="saved" id="saved"></span>
+    <button id="btnComments">Comments</button>
+    <button id="btnAdd">Add project</button>
+    <button id="btnExportCsv">Export CSV</button>
+    <button id="btnExportJson">Export JSON</button>
+    <button id="btnImport">Import JSON</button>
+    <button id="btnReset" class="ghost">Reset</button>
+    <button id="btnAdmin" class="adminbtn" style="display:none"><span class="ic"></span><span class="lb">Admin</span></button>
+    <input type="file" id="fileInput" accept="application/json,.json">
+  </div>
+</header>
+<div class="banner" id="banner"></div>
+<div class="toast" id="toast"></div>
+
+<div class="wrap">
+  <div class="legend" id="legend"></div>
+  <div class="board" id="board"></div>
+
+  <details class="defs">
+    <summary>Gate definitions and notes</summary>
+    <div class="cont">
+      <div class="defgrid" id="defgrid"></div>
+      <div class="notes" id="notesText"></div>
+    </div>
+  </details>
+</div>
+
+<footer class="app">
+  Derived start and end dates update as you move gates. Edits are saved to this browser only. Use Export to share a copy.
+</footer>
+
+<!-- Cell popover -->
+<div class="pop" id="pop" role="dialog" aria-label="Edit week">
+  <h4 id="popTitle"></h4>
+  <div class="sub" id="popSub"></div>
+  <div class="editonly">
+    <div class="stepper">
+      <span class="lead">Weeks in this phase</span>
+      <button class="minus" id="stepMinus" title="Remove this week" aria-label="Remove this week">&#8722;</button>
+      <button class="plus" id="stepPlus" title="Add a week here" aria-label="Add a week here">+</button>
+    </div>
+    <div class="hint">Plus adds a week of this gate and pushes later gates right. Minus removes this week and pulls later gates left.</div>
+    <div class="lbl">Gate for this week</div>
+    <div class="gatepick" id="gatepick"></div>
+  </div>
+  <div class="lbl">Comments</div>
+  <div id="popComments"></div>
+  <div class="editonly">
+    <textarea id="popNote" placeholder="Add a comment for this week"></textarea>
+  </div>
+  <div class="actions">
+    <button id="popClose" class="ghost">Close</button>
+    <button id="popAdd" class="primary">Add comment</button>
+  </div>
+</div>
+
+<!-- Row menu -->
+<div class="menu" id="menu" role="menu">
+  <div class="shift">
+    <span class="lbl2">Move by</span>
+    <input type="number" class="num" id="shiftN" min="1" max="26" value="2">
+    <button id="shiftEarlier" class="small">Earlier</button>
+    <button id="shiftLater" class="small">Later</button>
+  </div>
+  <div class="sep"></div>
+  <div class="mrow" id="mDuplicate">Duplicate project</div>
+  <div class="mrow danger" id="mDelete">Delete project</div>
+</div>
+
+<!-- Comments drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Comments">
+  <header>
+    <h3>Comments</h3>
+    <button class="ghost" id="drawerClose" style="margin-left:auto">Close</button>
+  </header>
+  <div class="body" id="cmtBody"></div>
+</aside>
+
+<script>
+"use strict";
+
+/* =========================================================================
+   SHARED STORAGE CONFIG  (edit the four GH values and the password below)
+   Leave GH.owner / GH.repo as the placeholders to run locally with no server.
+   Fill them in to store the roadmap in a GitHub JSON file that everyone shares.
+   ========================================================================= */
+const GH = {
+  owner:  "YOUR_GITHUB_USERNAME",   // e.g. "siva-stelic" or your org
+  repo:   "YOUR_REPO_NAME",         // e.g. "stelic-roadmap-data" (make it public)
+  path:   "roadmap.json",           // the JSON file that will hold the data
+  branch: "main"
+};
+const ADMIN_PASSWORD = "stelic@2026";
+function ghConfigured(){
+  return GH.owner && GH.owner.indexOf("YOUR_")!==0 && GH.repo && GH.repo.indexOf("YOUR_")!==0;
+}
+/* ---------- Seed data (from Dashboard_Tracker.xlsx) ---------- */
+const GATES = {
+  G1:{label:"Gate 1", short:"G1", color:"#1E2761", name:"Scope",         desc:"KPIs locked, data sources mapped, stakeholder alignment"},
+  G2:{label:"Gate 2", short:"G2", color:"#0066CC", name:"Data Readiness",desc:"Connections tested, credentials secured, refresh cadence"},
+  G3:{label:"Gate 3", short:"G3", color:"#00A8E8", name:"Prototype",     desc:"KPI calcs demonstrated, UX validated, layout approved"},
+  G4:{label:"Gate 4", short:"G4", color:"#00D084", name:"Production",    desc:"UAT complete, security signed, go live ready"},
+  G5:{label:"Gate 5", short:"G5", color:"#FFC107", name:"Acceptance",    desc:"Two week monitoring, bugs cleared, adoption tracked"},
+  G6:{label:"Gate 6", short:"G6", color:"#FF6B35", name:"Value",         desc:"ROI metrics, lessons learned, exec summary"},
+  HOLD:{label:"Hold", short:"Hold", color:"#9AA3B2", name:"On hold",     desc:"Paused, no active gate work this week"}
+};
+const GATE_ORDER = ["G1","G2","G3","G4","G5","G6","HOLD"];
+const SEED_VERSION = "2026-08-25.5";
+
+const SEED = {
+  weekStart:"2026-06-08",
+  weekCount:25,
+  currentWeekIso:"2026-08-24",
+  sections:[
+    { id:"delivery", title:"Dashboard delivery roadmap", projects:[
+      {id:"amgen", name:"Amgen", resource:"Muhammad + Siva", cells:{0:"G1",1:"G2",2:"G2",3:"G3",4:"HOLD",5:"HOLD",6:"HOLD",7:"HOLD",8:"G4",9:"G4",10:"G4",11:"G4",12:"G5",13:"G5",14:"G6"}, notes:{}},
+      {id:"oracle", name:"Oracle", resource:"Muhammad + Siva", cells:{11:"G5",12:"G5",13:"G6"}, notes:{}},
+      {id:"eas", name:"EAS", resource:"Muhammad + Siva", cells:{6:"G1",7:"G2",8:"G3",9:"G3",10:"G3",11:"G4",12:"G4",13:"G4",14:"G5",15:"G5",16:"G6"}, notes:{}},
+      {id:"pubstor", name:"Public Storage", resource:"Muhammad + Siva", cells:{1:"G1",2:"G2",3:"G3",4:"G3",5:"HOLD",6:"HOLD",7:"G4",8:"G4",9:"G5",10:"G5",11:"G6"}, notes:{}},
+      {id:"miller", name:"Miller", resource:"Muhammad + Siva", cells:{6:"G1",7:"G2",8:"G2",9:"G3",10:"G3",11:"G4",12:"G4",13:"G5",14:"G5",15:"G6"}, notes:{}},
+      {id:"stelicint", name:"Stelic Internal", resource:"Muhammad + Siva", cells:{10:"G1",11:"G1",12:"G1",13:"G2",14:"G3",15:"G3",16:"G3",17:"G3",18:"G4",19:"G4",20:"G4",21:"G5",22:"G5",23:"G6"}, notes:{}},
+      {id:"schedviewer", name:"Schedule Viewer", resource:"Muhammad + Siva", cells:{11:"G1",12:"G2",13:"G2",14:"G3",15:"G4",16:"G4",17:"G5",18:"G5",19:"G6"}, notes:{}},
+      {id:"scansca", name:"Scansca Dashboard", resource:"Muhammad + Siva", cells:{10:"G1",11:"G1",12:"G1",13:"G1",14:"G2",15:"G3",16:"G3",17:"G3",18:"G4",19:"G4",20:"G4",21:"G5",22:"G5",23:"G5",24:"G6"}, notes:{}},
+      {id:"clayco", name:"Clayco", resource:"Muhammad + Siva", cells:{10:"G1",11:"G1",12:"G1",13:"G1",14:"G2",15:"G3",16:"G3",17:"G3",18:"G4",19:"G4",20:"G4",21:"G5",22:"G5",23:"G5",24:"G6"}, notes:{}}
+    ]},
+    { id:"migration", title:"Dashboard migration (SharePoint to HTML)", projects:[
+      {id:"google", name:"Google", resource:"", cells:{9:"G1",10:"G2",11:"G3",12:"G3",13:"G3",14:"G4",15:"G4",16:"G4",17:"G5",18:"G5",19:"G5",20:"G6"}, notes:{}}
+    ]}
+  ],
+  notesText:"We can start the next project once we clear Stage Gate 3."
+};
+
+/* ---------- Date helpers ---------- */
+const MS_DAY = 86400000;
+function isoToDate(iso){ const [y,m,d]=iso.split("-").map(Number); return new Date(Date.UTC(y,m-1,d)); }
+function dateToIso(dt){ return dt.toISOString().slice(0,10); }
+function addWeeksIso(iso,w){ return dateToIso(new Date(isoToDate(iso).getTime()+w*7*MS_DAY)); }
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function fmtShort(iso){ const d=isoToDate(iso); return MON[d.getUTCMonth()]+" "+d.getUTCDate(); }
+function fmtLong(iso){ const d=isoToDate(iso); return MON[d.getUTCMonth()]+" "+d.getUTCDate()+", "+d.getUTCFullYear(); }
+function monthOf(iso){ return isoToDate(iso).getUTCMonth(); }
+
+/* ---------- Contrast ---------- */
+function isLight(hex){
+  const c=hex.replace("#",""); const r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);
+  return (0.2126*r+0.7152*g+0.0722*b) > 150;
+}
+
+/* ---------- State ---------- */
+let state = null;
+const LS_KEY = "stelic_roadmap_state_v1";
+
+/* Continuity rule: no project skips a week between its first and last gate.
+   Any internal blank is filled by carrying the current phase forward. */
+function fillGaps(sections){
+  sections.forEach(sec=>sec.projects.forEach(p=>{
+    // migrate comments to a per-week list: string -> [{text, ts}]
+    if(p.notes){
+      Object.keys(p.notes).forEach(k=>{
+        const v=p.notes[k];
+        if(typeof v==="string"){ if(v.trim()) p.notes[k]=[{text:v.trim(), ts:null}]; else delete p.notes[k]; }
+        else if(Array.isArray(v)){ const a=v.map(x=> typeof x==="string"?{text:x, ts:null}:x).filter(x=>x&&x.text); if(a.length) p.notes[k]=a; else delete p.notes[k]; }
+        else { delete p.notes[k]; }
+      });
+    }
+    const keys=Object.keys(p.cells).map(Number);
+    if(keys.length<2) return;
+    const min=Math.min(...keys), max=Math.max(...keys);
+    let last=p.cells[min];
+    for(let i=min;i<=max;i++){
+      if(p.cells[i]!==undefined) last=p.cells[i];
+      else p.cells[i]=last;
+    }
+  }));
+}
+function noteList(p, idx){ const v=p&&p.notes&&p.notes[idx]; return Array.isArray(v)?v:[]; }
+function addComment(p, idx, text){ if(!text||!text.trim()) return; p.notes=p.notes||{}; const arr=noteList(p,idx).slice(); arr.push({text:text.trim(), ts:Date.now()}); p.notes[idx]=arr; }
+function deleteComment(p, idx, i){ const arr=noteList(p,idx).slice(); arr.splice(i,1); if(arr.length) p.notes[idx]=arr; else delete p.notes[idx]; }
+function fmtStamp(ts){ if(!ts) return ""; const d=new Date(ts); const mo=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][d.getMonth()];
+  let h=d.getHours(), m=d.getMinutes(); const ap=h>=12?"PM":"AM"; h=h%12||12; return `${mo} ${d.getDate()}, ${h}:${String(m).padStart(2,"0")} ${ap}`; }
+function buildFreshState(){
+  const weeks=[]; for(let i=0;i<SEED.weekCount;i++) weeks.push(addWeeksIso(SEED.weekStart,i));
+  const st={
+    seedVersion:SEED_VERSION,
+    weeks,
+    sections: JSON.parse(JSON.stringify(SEED.sections)),
+    notesText: SEED.notesText
+  };
+  st.currentWeekIso = SEED.currentWeekIso;
+  fillGaps(st.sections);
+  return st;
+}
+/* ---------- Storage + admin layer ----------
+   MODE 'local'  : opened as a file, saves to this browser (fully editable).
+   MODE 'server' : hosted on Vercel, reads/writes shared JSON via /api/state.
+                   Viewers are read-only; an admin passcode unlocks editing. */
+let MODE = "local";
+let isAdmin = true;
+const ADMIN_SS_KEY = "stelic_admin_key";
+function adminKey(){ try{ return sessionStorage.getItem(ADMIN_SS_KEY)||""; }catch(e){ return ""; } }
+function adminHeaders(extra){ const k=adminKey(); const h=Object.assign({}, extra||{}); if(k) h["x-admin-key"]=k; return h; }
+
+function flashSaved(msg){
+  const el=document.getElementById("saved");
+  el.innerHTML="<b>"+msg+"</b>";
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{el.textContent="";},2200);
+}
+function toast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg; t.classList.add("show");
+  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),2600);
+}
+function localSave(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
+
+/* ---------- GitHub storage (no server needed) ----------
+   Viewers read the JSON from the public raw URL. An admin unlocks with the
+   password, pastes a GitHub token once per session, and edits commit the JSON
+   back to the repo through the GitHub API. The token never leaves the browser. */
+let ghSha=null, ghSaveTimer=null, ghDirty=false, ghSaving=false;
+function ghTokenGet(){ try{ return sessionStorage.getItem("stelic_gh_token")||""; }catch(e){ return ""; } }
+function ghTokenSet(t){ try{ sessionStorage.setItem("stelic_gh_token", t); }catch(e){} }
+function b64encode(str){ const bytes=new TextEncoder().encode(str); let bin=""; for(const b of bytes) bin+=String.fromCharCode(b); return btoa(bin); }
+function b64decode(b64){ const bin=atob((b64||"").replace(/\s/g,"")); const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0)); return new TextDecoder().decode(bytes); }
+function ghRawUrl(){ return `https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/${GH.path}?t=${Date.now()}`; }
+function ghApiUrl(){ return `https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.path}`; }
+
+async function ghReadRaw(){
+  const r=await fetch(ghRawUrl(),{cache:"no-store"});
+  if(r.status===404) return null;
+  if(!r.ok) throw new Error("raw "+r.status);
+  return await r.json();
+}
+async function ghReadApi(){
+  const token=ghTokenGet();
+  const headers={"Accept":"application/vnd.github+json"};
+  if(token) headers["Authorization"]="Bearer "+token;
+  const r=await fetch(ghApiUrl()+`?ref=${GH.branch}&t=${Date.now()}`,{headers,cache:"no-store"});
+  if(r.status===404){ ghSha=null; return null; }
+  if(!r.ok) throw new Error("api "+r.status);
+  const d=await r.json(); ghSha=d.sha;
+  return JSON.parse(b64decode(d.content));
+}
+function scheduleGhCommit(){
+  ghDirty=true; clearTimeout(ghSaveTimer);
+  ghSaveTimer=setTimeout(()=>{ if(!ghSaving) ghCommit(); }, 1200);
+}
+async function ghCommit(){
+  ghDirty=false;
+  const token=ghTokenGet();
+  if(!token){ toast("Paste a GitHub token to save. Click Admin, then paste it."); flashSaved("Not saved"); return; }
+  ghSaving=true; flashSaved("Saving to GitHub");
+  try{
+    if(ghSha===null){ try{ await ghReadApi(); }catch(e){} }
+    const mkBody=()=>{ const b={ message:`Roadmap update ${new Date().toISOString()}`, content:b64encode(JSON.stringify(state,null,2)), branch:GH.branch }; if(ghSha) b.sha=ghSha; return b; };
+    const hdr={ "Authorization":"Bearer "+token, "Accept":"application/vnd.github+json", "Content-Type":"application/json" };
+    let r=await fetch(ghApiUrl(),{method:"PUT",headers:hdr,body:JSON.stringify(mkBody())});
+    if(r.status===409){ await ghReadApi(); r=await fetch(ghApiUrl(),{method:"PUT",headers:hdr,body:JSON.stringify(mkBody())}); }
+    if(r.status===401||r.status===403){ flashSaved("Token rejected"); toast("GitHub rejected the token. Check that it has Contents read and write on this repo."); ghSaving=false; return; }
+    if(!r.ok){ flashSaved("Save failed"); ghSaving=false; return; }
+    const res=await r.json(); ghSha=(res.content&&res.content.sha)?res.content.sha:ghSha;
+    flashSaved("Saved to GitHub");
+  }catch(e){ flashSaved("Save failed"); }
+  ghSaving=false;
+  if(ghDirty) scheduleGhCommit();
+}
+async function adminUnlockGithub(){
+  const pw=prompt("Enter the admin password to edit this roadmap");
+  if(pw===null) return;
+  if(pw!==ADMIN_PASSWORD){ toast("That password was not accepted."); return; }
+  if(!ghTokenGet()){
+    const tok=prompt("Paste a GitHub token with Contents read and write on "+GH.owner+"/"+GH.repo+".\nIt is kept only in this browser session, never saved in the page.");
+    if(tok && tok.trim()) ghTokenSet(tok.trim());
+  }
+  isAdmin=true;
+  try{ const fresh=await ghReadApi(); if(fresh && fresh.sections){ fillGaps(fresh.sections); state=fresh; } }catch(e){}
+  applyMode(); render(); toast("Editing unlocked. Your changes commit to GitHub for everyone.");
+}
+function adminLockGithub(){ isAdmin=false; applyMode(); render(); toast("Locked. You are viewing read only."); }
+
+
+let saveTimer=null;
+function loadState(){
+  try{
+    const raw=localStorage.getItem(LS_KEY);
+    if(raw){
+      const s=JSON.parse(raw);
+      if(s && s.seedVersion===SEED_VERSION && Array.isArray(s.weeks)){ fillGaps(s.sections); return s; }
+    }
+  }catch(e){}
+  return buildFreshState();
+}
+function saveState(){
+  state.updatedAt = Date.now();
+  if(MODE==="github"){
+    localSave();
+    if(!isAdmin) return;
+    scheduleGhCommit();
+  } else if(MODE==="server"){
+    localSave(); // local cache
+    if(!isAdmin){ return; }
+    fetch("/api/state",{method:"POST", headers:adminHeaders({"content-type":"application/json"}), body:JSON.stringify({state})})
+      .then(async r=>{
+        if(r.status===401){ isAdmin=false; applyMode(); toast("Admin session ended. Sign in again to edit."); return; }
+        if(!r.ok){ let msg=""; try{ const d=await r.json(); msg=d.error||""; }catch(e){} flashSaved("Save failed"); toast("Could not save to the shared store. "+msg); return; }
+        flashSaved("Saved to shared store");
+      })
+      .catch(()=>{ flashSaved("Offline, cached locally"); toast("Could not reach the server. Your change is cached in this browser only."); });
+  } else if(MODE==="static"){
+    localSave();
+    flashSaved("Saved locally. Export to publish");
+  } else {
+    localSave();
+    flashSaved("Saved to this browser");
+  }
+}
+
+async function fetchState(){
+  const ctrl=new AbortController();
+  const t=setTimeout(()=>ctrl.abort(), 3000);
+  try{
+    const r=await fetch("/api/state",{headers:adminHeaders(), signal:ctrl.signal, cache:"no-store"});
+    clearTimeout(t);
+    if(r.status===404) return undefined;           // no function deployed: fall through
+    MODE="server";                                  // function exists (200, 401, 500...)
+    if(r.ok){
+      const data=await r.json();
+      isAdmin = !!data.authorized;
+      return data.state && data.state.sections ? data.state : null;
+    }
+    isAdmin=false;                                  // present but errored (often missing env vars)
+    try{ const d=await r.json(); if(d && d.error) setTimeout(()=>toast("Server: "+d.error),500); }catch(e){}
+    return null;
+  }catch(e){
+    clearTimeout(t);
+    return undefined; // not a server deploy
+  }
+}
+
+// Static hosting: a published dataset.json sitting next to index.html
+async function fetchPublished(){
+  const ctrl=new AbortController();
+  const t=setTimeout(()=>ctrl.abort(), 3000);
+  try{
+    const r=await fetch("dataset.json",{signal:ctrl.signal, cache:"no-store"});
+    clearTimeout(t);
+    if(!r.ok) return null;
+    const s=await r.json();
+    return (s && Array.isArray(s.sections) && Array.isArray(s.weeks)) ? s : null;
+  }catch(e){ clearTimeout(t); return null; }
+}
+function loadLocalRaw(){
+  try{ const raw=localStorage.getItem(LS_KEY); if(raw){ const s=JSON.parse(raw);
+    if(s && s.seedVersion===SEED_VERSION && Array.isArray(s.weeks)) return s; } }catch(e){}
+  return null;
+}
+
+async function boot(){
+  renderLegend();
+  if(ghConfigured()){
+    MODE="github"; isAdmin=false;
+    let gh=null;
+    try{ gh=await ghReadRaw(); }catch(e){}
+    if(gh && Array.isArray(gh.sections)){ fillGaps(gh.sections); state=gh; }
+    else { state=buildFreshState(); }   // file not created yet: first admin save creates it
+    startViewerPolling();
+    renderDefs(); applyMode(); render();
+    document.getElementById("saved").textContent="";
+    return;
+  }
+  const serverState = await fetchState();
+  if(MODE==="server"){
+    if(serverState){ fillGaps(serverState.sections); state=serverState; }
+    else {
+      state=buildFreshState();               // shared store empty
+      if(isAdmin){ saveState(); }             // first admin visit seeds it
+    }
+    startViewerPolling();
+  } else {
+    const published = await fetchPublished();
+    if(published){
+      MODE="static"; isAdmin=false;           // viewers see published data, read only by default
+      const local=loadLocalRaw();
+      if(local && (local.updatedAt||0) > (published.updatedAt||0)){ fillGaps(local.sections); state=local; }
+      else { fillGaps(published.sections); state=published; }
+    } else {
+      MODE="local"; isAdmin=false;
+      state=loadState();                      // local browser copy, gated by the same password
+    }
+  }
+  renderDefs();
+  applyMode(); render();
+  document.getElementById("saved").textContent="";
+}
+
+const LOCK_CLOSED='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>';
+const LOCK_OPEN='<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 7.6-1.6"/></svg>';
+function setAdminBtn(locked, label){
+  const b=document.getElementById("btnAdmin");
+  b.style.display="";
+  b.className="adminbtn "+(locked?"locked":"unlocked");
+  b.querySelector(".ic").innerHTML = locked?LOCK_CLOSED:LOCK_OPEN;
+  b.querySelector(".lb").textContent = label;
+}
+const MON_FULL=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function fmtMonthYear(ts){ const d=ts?new Date(ts):new Date(); return MON_FULL[d.getMonth()]+" "+d.getFullYear(); }
+function updateAsOf(){
+  const el=document.getElementById("asof");
+  if(!el) return;
+  const ts=state && state.updatedAt;
+  el.innerHTML='Data as of:<b>'+fmtMonthYear(ts)+'</b>';
+}
+
+function applyMode(){
+  const pill=document.getElementById("modepill");
+  document.body.classList.toggle("readonly", !isAdmin);   // every mode is locked until admin
+  if(MODE==="server" || MODE==="github"){
+    if(isAdmin){ setAdminBtn(false,"Admin on"); pill.textContent="Shared, admin"; pill.className="modepill admin"; }
+    else { setAdminBtn(true,"Admin"); pill.textContent="Shared, view only"; pill.className="modepill view"; }
+  } else if(MODE==="static"){
+    if(isAdmin){ setAdminBtn(false,"Admin on"); pill.textContent="Editing (local)"; pill.className="modepill admin"; }
+    else { setAdminBtn(true,"Admin"); pill.textContent="Published view"; pill.className="modepill view"; }
+  } else {
+    if(isAdmin){ setAdminBtn(false,"Admin on"); pill.textContent="Editing (local)"; pill.className="modepill admin"; }
+    else { setAdminBtn(true,"Admin"); pill.textContent="View only"; pill.className="modepill local"; }
+  }
+  updateAsOf();
+  const banner=document.getElementById("banner");
+  if(banner){
+    if(MODE==="local"){
+      banner.className="banner show";
+      banner.innerHTML="<b>Not connected to shared storage.</b> Comments and edits are saved only in this browser, so no one else can see them. Connect the backend (see the setup notes) to share changes with everyone who has the link.";
+    } else { banner.className="banner"; banner.textContent=""; }
+  }
+}
+async function adminSignIn(){
+  const key=prompt("Enter the admin password to edit this roadmap");
+  if(key===null) return;
+  try{
+    const r=await fetch("/api/state",{headers:{"x-admin-key":key}, cache:"no-store"});
+    const data=await r.json().catch(()=>({}));
+    if(data && data.authorized){
+      try{ sessionStorage.setItem(ADMIN_SS_KEY, key); }catch(e){}
+      isAdmin=true; if(data.state && data.state.sections){ fillGaps(data.state.sections); state=data.state; }
+      applyMode(); render(); toast("Admin unlocked. Your changes now save for everyone.");
+    } else if(data && data.error){
+      toast("Server not ready: "+data.error);
+    } else {
+      toast("That password was not accepted.");
+    }
+  }catch(e){ toast("Could not reach the server."); }
+}
+function adminSignOut(){
+  try{ sessionStorage.removeItem(ADMIN_SS_KEY); }catch(e){}
+  isAdmin=false; applyMode(); render(); toast("Signed out. You are now viewing read only.");
+}
+
+let pollTimer=null;
+function startViewerPolling(){
+  clearInterval(pollTimer);
+  pollTimer=setInterval(async ()=>{
+    if(isAdmin) return;                              // admins rely on their own saves
+    if(pop.classList.contains("open") || drawer.classList.contains("open")) return;
+    try{
+      let latest=null;
+      if(MODE==="github"){ latest=await ghReadRaw(); }
+      else if(MODE==="server"){ const r=await fetch("/api/state",{headers:adminHeaders(), cache:"no-store"}); if(r.ok){ latest=(await r.json()).state; } }
+      if(latest && latest.updatedAt && (!state.updatedAt || latest.updatedAt>state.updatedAt)){
+        fillGaps(latest.sections); state=latest; render();
+      }
+    }catch(e){}
+  }, MODE==="github" ? 60000 : 20000);
+}
+
+/* ---------- Project helpers ---------- */
+function allProjects(){ const out=[]; state.sections.forEach(s=>s.projects.forEach(p=>out.push({sec:s,proj:p}))); return out; }
+function findProject(id){ for(const s of state.sections) for(const p of s.projects) if(p.id===id) return {sec:s,proj:p}; return null; }
+function currentWeekIndex(){ const i=state.weeks.indexOf(state.currentWeekIso); return i; }
+function projSpan(p){
+  const keys=Object.keys(p.cells).map(Number);
+  if(!keys.length) return null;
+  return {min:Math.min(...keys), max:Math.max(...keys)};
+}
+function ensureWeeksCover(maxIdx){
+  while(state.weeks.length<=maxIdx){
+    state.weeks.push(addWeeksIso(state.weeks[state.weeks.length-1],1));
+  }
+}
+function normalizeAxis(){
+  // find global min index
+  let gmin=Infinity, gmax=-Infinity;
+  allProjects().forEach(({proj})=>{
+    Object.keys(proj.cells).forEach(k=>{k=+k; if(k<gmin)gmin=k; if(k>gmax)gmax=k;});
+    Object.keys(proj.notes||{}).forEach(k=>{k=+k; if(k<gmin)gmin=k; if(k>gmax)gmax=k;});
+  });
+  if(gmin===Infinity) return;
+  if(gmin<0){
+    const off=-gmin;
+    // prepend weeks
+    const pre=[]; for(let i=off;i>=1;i--) pre.push(addWeeksIso(state.weeks[0],-i));
+    state.weeks=pre.concat(state.weeks);
+    // reindex everything
+    allProjects().forEach(({proj})=>{
+      proj.cells=reindex(proj.cells,off);
+      proj.notes=reindex(proj.notes||{},off);
+    });
+    const ci=currentWeekIndex(); // still valid since we track by iso
+    gmax+=off;
+  }
+  ensureWeeksCover(gmax);
+}
+function reindex(map,delta){
+  const out={}; Object.keys(map).forEach(k=>{ out[(+k)+delta]=map[k]; }); return out;
+}
+
+/* Operations */
+function setGate(p,idx,gate){
+  if(gate===null){ delete p.cells[idx]; }
+  else { p.cells[idx]=gate; }
+}
+function shiftProject(p,delta){
+  p.cells=reindex(p.cells,delta);
+  p.notes=reindex(p.notes||{},delta);
+  normalizeAxis();
+}
+function insertWeeks(p,at,n){
+  n=Math.max(1,Math.floor(n));
+  const fill = (p.cells[at-1]!==undefined) ? p.cells[at-1] : null;
+  const nc={}, nn={};
+  Object.keys(p.cells).forEach(k=>{ k=+k; nc[k>=at? k+n : k]=p.cells[k]; });
+  Object.keys(p.notes||{}).forEach(k=>{ k=+k; nn[k>=at? k+n : k]=p.notes[k]; });
+  if(fill!==null){ for(let i=0;i<n;i++) nc[at+i]=fill; }
+  p.cells=nc; p.notes=nn;
+  normalizeAxis();
+}
+function removeWeek(p,at){
+  const nc={}, nn={};
+  Object.keys(p.cells).forEach(k=>{ k=+k; if(k===at) return; nc[k>at? k-1 : k]=p.cells[k]; });
+  Object.keys(p.notes||{}).forEach(k=>{ k=+k; if(k===at) return; nn[k>at? k-1 : k]=p.notes[k]; });
+  p.cells=nc; p.notes=nn;
+  normalizeAxis();
+}
+
+/* ---------- Rendering ---------- */
+const board=document.getElementById("board");
+
+function render(){
+  const weeks=state.weeks;
+  const ciso=state.currentWeekIso;
+  const rs=getComputedStyle(document.documentElement);
+  const LW=parseInt(rs.getPropertyValue("--leftw"))||248;
+  const NW=parseInt(rs.getPropertyValue("--noww"))||96;
+  const CW=parseInt(rs.getPropertyValue("--cellw"))||62;
+  // one shared column track set: header cells and body cells in the same week land on the same track
+  let html=`<div class="grid" style="grid-template-columns:${LW}px ${NW}px repeat(${weeks.length}, ${CW}px)">`;
+  // header row
+  html+='<div class="g-head g-corner"><div class="h">Initiative</div><div class="s">Resource, start to end</div></div>';
+  html+='<div class="g-head g-nowhead">This week</div>';
+  weeks.forEach((w,i)=>{
+    const ms = (i===0)||(monthOf(w)!==monthOf(weeks[i-1]));
+    html+=`<div class="g-head g-weekhead${ms?" monthstart":""}">`+
+          `<span class="mo">${ms?MON[monthOf(w)].toUpperCase():""}</span>`+
+          `<span class="dy">${isoToDate(w).getUTCDate()}</span></div>`;
+  });
+
+  const ed = isAdmin ? 'contenteditable="true" spellcheck="false"' : '';
+  state.sections.forEach(sec=>{
+    html+=`<div class="g-section"><span>${esc(sec.title)}</span></div>`;
+    sec.projects.forEach(p=>{
+      const span=projSpan(p);
+      const dates = span ? `${fmtShort(weeks[span.min])} to ${fmtShort(weeks[span.max])} (${span.max-span.min+1} wks)` : "No gates set";
+      html+=`<div class="g-proj">
+        <div class="pname">
+          <span class="nm" ${ed} data-edit="name" data-id="${p.id}">${esc(p.name)}</span>
+          ${isAdmin?`<button class="rowmenu-btn" data-menu="${p.id}" title="Project options" aria-label="Project options">&#9662;</button>`:``}
+        </div>
+        <span class="res" ${ed} data-edit="res" data-id="${p.id}">${esc(p.resource||(isAdmin?"Add resource":""))}</span>
+        <div class="dates">${dates}</div>
+      </div>`;
+      html+=`<div class="g-now">${nowCell(p)}</div>`;
+      weeks.forEach((w,i)=>{
+        const ms=(i===0)||(monthOf(w)!==monthOf(weeks[i-1]));
+        const g=p.cells[i];
+        const note=(noteList(p,i).length)?1:0;
+        let inner="";
+        if(g){ const meta=GATES[g]; const light=isLight(meta.color);
+          inner=`<div class="gate${light?" light":""}" style="background:${meta.color}">${meta.short}</div>`;
+        }
+        if(note) inner+=`<span class="note-dot" title="${esc(noteList(p,i).map(c=>c.text).join('\n'))}"></span>`;
+        const inBar = span && i>=span.min && i<=span.max;
+        if(inBar && isAdmin){
+          inner+=`<button class="del-handle" data-del="${p.id}:${i}" title="Remove this week" aria-label="Remove this week">&#8722;</button>`;
+          inner+=`<button class="ins-handle" data-ins="${p.id}:${i}" title="Add a week here" aria-label="Add a week here"></button>`;
+        }
+        html+=`<div class="g-cell${ms?" monthstart":""}" data-id="${p.id}" data-idx="${i}">${inner}</div>`;
+      });
+    });
+  });
+  html+="</div>";
+  board.innerHTML=html;
+  updateAsOf();
+}
+
+function nowCell(p){
+  const ci=currentWeekIndex();
+  const span=projSpan(p);
+  if(!span) return `<span class="nowchip mut">Not started</span>`;
+  let label, color=null;
+  const g=p.cells[ci];
+  if(g){ label=GATES[g].label; color=GATES[g].color; }
+  else if(ci<span.min){ label="Upcoming"; }
+  else if(ci>span.max){ label="Complete"; }
+  else { label="Idle week"; }
+  const chip = color
+    ? `<span class="nowchip"><span class="sw" style="background:${color}"></span>${label}</span>`
+    : `<span class="nowchip mut">${label}</span>`;
+  const done = Math.min(1, Math.max(0, (ci-span.min+1)/(span.max-span.min+1)));
+  const pct = ci>span.max?1:(ci<span.min?0:done);
+  return chip+`<div class="prog"><i style="width:${Math.round(pct*100)}%"></i></div>`;
+}
+
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function renderLegend(){
+  const el=document.getElementById("legend");
+  let h='<div class="grp">';
+  GATE_ORDER.forEach(k=>{ const m=GATES[k]; const light=isLight(m.color);
+    h+=`<span class="chip${light?"":""}" style="background:${m.color};${light?"color:#12233A":""}">${m.label}${k!=="HOLD"?": "+m.name:""}</span>`;
+  });
+  h+='</div><span class="muted">Click any week to set a gate or add a comment. Use the arrow next to a name to move a whole project.</span>';
+  el.innerHTML=h;
+}
+function renderDefs(){
+  const g=document.getElementById("defgrid");
+  g.innerHTML=GATE_ORDER.filter(k=>k!=="HOLD").map(k=>{ const m=GATES[k]; const light=isLight(m.color);
+    return `<div class="defcard"><div class="g"><span class="swatch" style="background:${m.color}"></span>${m.label}: ${m.name}</div><p>${m.desc}</p></div>`;
+  }).join("");
+  document.getElementById("notesText").textContent="Note: "+state.notesText;
+}
+
+/* ---------- Popover (cell editor) ---------- */
+const pop=document.getElementById("pop");
+let popCtx=null; // {pid, idx}
+function renderPopComments(proj, idx){
+  const box=document.getElementById("popComments");
+  const arr=noteList(proj, idx);
+  if(!arr.length){ box.innerHTML='<div class="nocmt">No comments yet.</div>'; return; }
+  box.innerHTML=arr.map((c,i)=>`<div class="cmtrow"><div class="cmttext">${esc(c.text)}</div>`+
+    `<div class="cmtmeta"><span>${c.ts?esc(fmtStamp(c.ts)):""}</span>${isAdmin?`<a data-delc="${i}">Delete</a>`:""}</div></div>`).join("");
+}
+function openPop(pid,idx,anchor){
+  const {proj}=findProject(pid);
+  popCtx={pid,idx};
+  document.getElementById("popTitle").textContent=proj.name;
+  document.getElementById("popSub").textContent="Week of "+fmtLong(state.weeks[idx]);
+  pop.classList.toggle("viewonly", !isAdmin);
+  renderPopComments(proj, idx);
+  if(isAdmin){
+    const gp=document.getElementById("gatepick");
+    gp.innerHTML=GATE_ORDER.map(k=>{ const m=GATES[k]; const light=isLight(m.color);
+      const sel=proj.cells[idx]===k;
+      return `<button data-gate="${k}" class="${light?"light":""}" style="background:${m.color};${sel?"outline:2px solid #12233A;outline-offset:1px":""}">${m.short}</button>`;
+    }).join("")+`<button data-gate="__clear" class="clear">Clear</button>`;
+    document.getElementById("popNote").value="";
+  }
+  // position
+  pop.classList.add("open");
+  const r=anchor.getBoundingClientRect();
+  const pw=pop.offsetWidth, ph=pop.offsetHeight;
+  let left=r.left, top=r.bottom+6;
+  if(left+pw>window.innerWidth-10) left=window.innerWidth-pw-10;
+  if(top+ph>window.innerHeight-10) top=Math.max(10,r.top-ph-6);
+  pop.style.left=Math.max(10,left)+"px"; pop.style.top=top+"px";
+  document.querySelectorAll(".g-cell.selected").forEach(c=>c.classList.remove("selected"));
+  anchor.classList.add("selected");
+}
+function closePop(){ pop.classList.remove("open"); popCtx=null; document.querySelectorAll(".g-cell.selected").forEach(c=>c.classList.remove("selected")); }
+
+document.getElementById("gatepick").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-gate]"); if(!b||!popCtx) return;
+  const {proj}=findProject(popCtx.pid);
+  const g=b.dataset.gate;
+  setGate(proj, popCtx.idx, g==="__clear"?null:g);
+  render(); saveState();
+  const cell=document.querySelector(`.g-cell[data-id="${popCtx.pid}"][data-idx="${popCtx.idx}"]`);
+  if(cell) openPop(popCtx.pid, popCtx.idx, cell);
+});
+document.getElementById("popAdd").addEventListener("click",()=>{
+  if(!popCtx || !isAdmin) return; const {proj}=findProject(popCtx.pid);
+  const ta=document.getElementById("popNote");
+  if(!ta.value.trim()){ ta.focus(); return; }
+  addComment(proj, popCtx.idx, ta.value);
+  ta.value="";
+  renderPopComments(proj, popCtx.idx);   // new comment appears below the others
+  render(); saveState();                  // updates the marker and saves to the shared store
+  ta.focus();
+});
+document.getElementById("popComments").addEventListener("click",e=>{
+  const d=e.target.closest("[data-delc]"); if(!d||!popCtx||!isAdmin) return;
+  const {proj}=findProject(popCtx.pid);
+  deleteComment(proj, popCtx.idx, +d.dataset.delc);
+  renderPopComments(proj, popCtx.idx);
+  render(); saveState();
+});
+document.getElementById("popClose").addEventListener("click",closePop);
+// Live stepper: add or remove a week at this point, one click at a time
+function reopenAt(pid, idx){
+  const clamp=Math.min(idx, state.weeks.length-1);
+  const cell=document.querySelector(`.g-cell[data-id="${pid}"][data-idx="${clamp}"]`);
+  if(cell) openPop(pid, clamp, cell); else closePop();
+}
+document.getElementById("stepPlus").addEventListener("click",()=>{
+  if(!popCtx) return; const {proj}=findProject(popCtx.pid);
+  insertWeeks(proj, popCtx.idx+1, 1);   // add one week right after this cell, cloning this gate
+  render(); saveState(); reopenAt(popCtx.pid, popCtx.idx);
+});
+document.getElementById("stepMinus").addEventListener("click",()=>{
+  if(!popCtx) return; const {proj}=findProject(popCtx.pid);
+  const idx=popCtx.idx;
+  removeWeek(proj, idx);                 // remove this week, pull later gates left
+  render(); saveState(); reopenAt(popCtx.pid, idx);
+});
+
+/* ---------- Row menu ---------- */
+const menu=document.getElementById("menu");
+let menuPid=null;
+function openMenu(pid,anchor){
+  menuPid=pid; menu.classList.add("open");
+  document.getElementById("shiftN").value=2;
+  const r=anchor.getBoundingClientRect();
+  let left=r.left, top=r.bottom+6;
+  const mw=menu.offsetWidth, mh=menu.offsetHeight;
+  if(left+mw>window.innerWidth-10) left=window.innerWidth-mw-10;
+  if(top+mh>window.innerHeight-10) top=Math.max(10,r.top-mh-6);
+  menu.style.left=Math.max(10,left)+"px"; menu.style.top=top+"px";
+}
+function closeMenu(){ menu.classList.remove("open"); menuPid=null; }
+document.getElementById("shiftEarlier").addEventListener("click",()=>{
+  const n=parseInt(document.getElementById("shiftN").value,10)||1; const {proj}=findProject(menuPid);
+  shiftProject(proj,-n); render(); saveState(); closeMenu();
+});
+document.getElementById("shiftLater").addEventListener("click",()=>{
+  const n=parseInt(document.getElementById("shiftN").value,10)||1; const {proj}=findProject(menuPid);
+  shiftProject(proj,n); render(); saveState(); closeMenu();
+});
+document.getElementById("mDuplicate").addEventListener("click",()=>{
+  const {sec,proj}=findProject(menuPid);
+  const copy=JSON.parse(JSON.stringify(proj));
+  copy.id=proj.id+"_copy_"+Math.random().toString(36).slice(2,6);
+  copy.name=proj.name+" (copy)";
+  const idx=sec.projects.indexOf(proj); sec.projects.splice(idx+1,0,copy);
+  render(); saveState(); closeMenu();
+});
+document.getElementById("mDelete").addEventListener("click",()=>{
+  const {sec,proj}=findProject(menuPid);
+  sec.projects=sec.projects.filter(x=>x!==proj);
+  render(); saveState(); closeMenu();
+});
+
+/* ---------- Board interactions ---------- */
+board.addEventListener("click",e=>{
+  const insBtn=e.target.closest("button[data-ins]");
+  if(insBtn){ e.stopPropagation(); const [pid,idx]=insBtn.dataset.ins.split(":");
+    const {proj}=findProject(pid); insertWeeks(proj, +idx+1, 1); render(); saveState(); return; }
+  const delBtn=e.target.closest("button[data-del]");
+  if(delBtn){ e.stopPropagation(); const [pid,idx]=delBtn.dataset.del.split(":");
+    const {proj}=findProject(pid); removeWeek(proj, +idx); render(); saveState(); return; }
+  const menuBtn=e.target.closest("button[data-menu]");
+  if(menuBtn){ e.stopPropagation(); openMenu(menuBtn.dataset.menu, menuBtn); return; }
+  const cell=e.target.closest(".g-cell");
+  if(cell){ openPop(cell.dataset.id, +cell.dataset.idx, cell); return; }
+});
+// inline name / resource editing
+board.addEventListener("focusout",e=>{
+  const ed=e.target.closest("[data-edit]"); if(!ed) return;
+  const {proj}=findProject(ed.dataset.id);
+  let val=ed.textContent.trim();
+  if(ed.dataset.edit==="name"){ proj.name=val||proj.name; }
+  else { proj.resource = (val==="Add resource")?"":val; }
+  saveState(); render();
+});
+board.addEventListener("keydown",e=>{
+  const ed=e.target.closest("[data-edit]");
+  if(ed && e.key==="Enter"){ e.preventDefault(); ed.blur(); }
+});
+
+/* ---------- Comments drawer ---------- */
+const scrim=document.getElementById("scrim"), drawer=document.getElementById("drawer");
+function openDrawer(){ renderComments(); scrim.classList.add("open"); drawer.classList.add("open"); }
+function closeDrawer(){ scrim.classList.remove("open"); drawer.classList.remove("open"); }
+document.getElementById("btnComments").addEventListener("click",openDrawer);
+document.getElementById("drawerClose").addEventListener("click",closeDrawer);
+scrim.addEventListener("click",closeDrawer);
+function renderComments(){
+  const body=document.getElementById("cmtBody");
+  const items=[];
+  allProjects().forEach(({proj})=>{
+    Object.keys(proj.notes||{}).forEach(k=>{ noteList(proj,+k).forEach((c,ci)=>{
+      items.push({pid:proj.id, name:proj.name, idx:+k, text:c.text, ts:c.ts, ci});
+    }); });
+  });
+  items.sort((a,b)=> a.idx-b.idx || a.name.localeCompare(b.name) || (a.ts||0)-(b.ts||0));
+  if(!items.length){ body.innerHTML='<div class="empty">No comments yet. Click a week and add a comment to see it here.</div>'; return; }
+  body.innerHTML=items.map(it=>`
+    <div class="cmt">
+      <div class="top"><span class="p">${esc(it.name)}</span><span class="w">Week of ${fmtLong(state.weeks[it.idx])}${it.ts?" &middot; "+esc(fmtStamp(it.ts)):""}</span></div>
+      <div class="txt">${esc(it.text)}</div>
+      <div class="lnk"><a data-jump="${it.pid}:${it.idx}">Open week</a>${isAdmin?`<a data-del="${it.pid}:${it.idx}:${it.ci}">Delete</a>`:""}</div>
+    </div>`).join("");
+}
+document.getElementById("cmtBody").addEventListener("click",e=>{
+  const j=e.target.closest("[data-jump]");
+  if(j){ const [pid,idx]=j.dataset.jump.split(":"); closeDrawer();
+    const cell=document.querySelector(`.g-cell[data-id="${pid}"][data-idx="${idx}"]`);
+    if(cell){ cell.scrollIntoView({block:"center",inline:"center",behavior:"smooth"}); setTimeout(()=>openPop(pid,+idx,cell),200); }
+    return;
+  }
+  const d=e.target.closest("[data-del]");
+  if(d){ const [pid,idx,ci]=d.dataset.del.split(":"); const {proj}=findProject(pid); deleteComment(proj, +idx, +ci);
+    render(); saveState(); renderComments(); }
+});
+
+/* ---------- Toolbar: add / reset / export / import ---------- */
+document.getElementById("btnAdd").addEventListener("click",()=>{
+  const sec=state.sections[0];
+  const id="proj_"+Math.random().toString(36).slice(2,7);
+  const ci=Math.max(0,currentWeekIndex());
+  sec.projects.push({id, name:"New initiative", resource:"Muhammad + Siva", cells:{[ci]:"G1"}, notes:{}});
+  render(); saveState();
+  const nm=document.querySelector(`.nm[data-id="${id}"]`);
+  if(nm){ nm.scrollIntoView({block:"center"}); nm.focus();
+    const rg=document.createRange(); rg.selectNodeContents(nm); const s=window.getSelection(); s.removeAllRanges(); s.addRange(rg);
+  }
+});
+document.getElementById("btnReset").addEventListener("click", async ()=>{
+  if(MODE==="github"){
+    if(confirm("Reload the roadmap from GitHub and discard any unsaved local edits?")){
+      try{ const gh=await ghReadRaw(); if(gh && gh.sections){ fillGaps(gh.sections); state=gh; } }catch(e){}
+      renderDefs(); render();
+    }
+    return;
+  }
+  if(MODE==="static"){
+    if(confirm("Discard your local edits and reload the published roadmap (dataset.json)?")){
+      try{ localStorage.removeItem(LS_KEY); }catch(e){}
+      const published=await fetchPublished();
+      if(published){ fillGaps(published.sections); state=published; } else { state=buildFreshState(); }
+      renderDefs(); render();
+    }
+    return;
+  }
+  if(confirm("Reset the roadmap to the original tracker? This clears your edits in this browser.")){
+    state=buildFreshState(); render(); renderDefs(); saveState();
+  }
+});
+function download(name,text,type){
+  const blob=new Blob([text],{type}); const url=URL.createObjectURL(blob);
+  const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click();
+  a.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+document.getElementById("btnExportJson").addEventListener("click",()=>{
+  download("Stelic_Roadmap.json", JSON.stringify(state,null,2), "application/json");
+});
+document.getElementById("btnExportCsv").addEventListener("click",()=>{
+  const q=s=>{ s=String(s==null?"":s); return /[",\n]/.test(s)? '"'+s.replace(/"/g,'""')+'"' : s; };
+  const head=["Section","Initiative","Resource","Start","End"].concat(state.weeks.map(w=>fmtShort(w)));
+  const lines=[head.map(q).join(",")];
+  state.sections.forEach(sec=>{
+    sec.projects.forEach(p=>{
+      const span=projSpan(p);
+      const row=[sec.title, p.name, p.resource||"", span?fmtShort(state.weeks[span.min]):"", span?fmtShort(state.weeks[span.max]):""];
+      state.weeks.forEach((w,i)=>{ const g=p.cells[i]; const note=(noteList(p,i).length)?" *":""; row.push(g?GATES[g].label+note:""); });
+      lines.push(row.map(q).join(","));
+    });
+  });
+  // comments block
+  lines.push(""); lines.push("Comments"); lines.push(["Initiative","Week","When","Comment"].map(q).join(","));
+  allProjects().forEach(({proj})=>Object.keys(proj.notes||{}).forEach(k=>{
+    noteList(proj,+k).forEach(c=>{ lines.push([proj.name, fmtLong(state.weeks[+k]), c.ts?fmtStamp(c.ts):"", c.text].map(q).join(",")); });
+  }));
+  download("Stelic_Roadmap.csv", lines.join("\n"), "text/csv");
+});
+document.getElementById("btnImport").addEventListener("click",()=>document.getElementById("fileInput").click());
+document.getElementById("fileInput").addEventListener("change",e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{ try{ const s=JSON.parse(rd.result);
+      if(!s.weeks||!s.sections) throw 0;
+      state=s; render(); renderDefs(); saveState();
+    }catch(err){ alert("That file could not be read as a roadmap export."); }
+    e.target.value="";
+  };
+  rd.readAsText(f);
+});
+
+/* ---------- Global close ---------- */
+document.addEventListener("click",e=>{
+  if(pop.classList.contains("open") && !e.target.closest("#pop") && !e.target.closest(".g-cell")) closePop();
+  if(menu.classList.contains("open") && !e.target.closest("#menu") && !e.target.closest("button[data-menu]")) closeMenu();
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closePop(); closeMenu(); closeDrawer(); } });
+
+/* ---------- Admin button ---------- */
+document.getElementById("btnAdmin").addEventListener("click",()=>{
+  if(isAdmin){
+    if(MODE==="server") adminSignOut();
+    else if(MODE==="github") adminLockGithub();
+    else { isAdmin=false; applyMode(); render(); toast("Locked. You are viewing read only."); }
+    return;
+  }
+  if(MODE==="server"){ adminSignIn(); return; }
+  if(MODE==="github"){ adminUnlockGithub(); return; }
+  // static / local: check the password in the page
+  const pw=prompt("Enter the admin password to edit");
+  if(pw===null) return;
+  if(pw===ADMIN_PASSWORD){ isAdmin=true; applyMode(); render();
+    toast(MODE==="static" ? "Editing on. Export to publish your changes." : "Editing unlocked.");
+  } else { toast("That password was not accepted."); }
+});
+
+/* ---------- Boot ---------- */
+boot();
+</script>
+</body>
+</html>
