@@ -60,7 +60,8 @@
                 "ts": 1787944684025
               }
             ]
-          }
+          },
+          "link": "https://amgen.stelic.io/"
         },
         {
           "id": "oracle",
@@ -245,5 +246,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1788197439032
+  "updatedAt": 1788198044684
 }
