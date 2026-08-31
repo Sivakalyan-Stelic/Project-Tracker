@@ -72,7 +72,8 @@
             "12": "G5",
             "13": "G6"
           },
-          "notes": {}
+          "notes": {},
+          "link": "https://mi-cost-dashboard.vercel.app/"
         },
         {
           "id": "eas",
@@ -246,5 +247,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1788198044684
+  "updatedAt": 1788198072879
 }
