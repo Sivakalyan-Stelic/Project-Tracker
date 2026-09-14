@@ -172,7 +172,7 @@
         },
         {
           "id": "scansca",
-          "name": "Scansca Dashboard",
+          "name": "Skanksa Dashboard",
           "resource": "Muhammad + Siva",
           "cells": {
             "10": "G1",
@@ -247,5 +247,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1788198072879
+  "updatedAt": 1789406673042
 }
