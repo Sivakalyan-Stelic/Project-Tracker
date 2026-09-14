@@ -179,21 +179,21 @@
           "name": "Skanksa Dashboard",
           "resource": "Muhammad + Siva",
           "cells": {
+            "13": "G1",
             "14": "G1",
             "15": "G1",
             "16": "G1",
-            "17": "G1",
-            "18": "G2",
+            "17": "G2",
+            "18": "G3",
             "19": "G3",
             "20": "G3",
-            "21": "G3",
+            "21": "G4",
             "22": "G4",
             "23": "G4",
-            "24": "G4",
+            "24": "G5",
             "25": "G5",
             "26": "G5",
-            "27": "G5",
-            "28": "G6"
+            "27": "G6"
           },
           "notes": {}
         },
@@ -251,5 +251,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789406695133
+  "updatedAt": 1789406703112
 }
