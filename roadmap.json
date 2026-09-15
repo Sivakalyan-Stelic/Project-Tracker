@@ -56,9 +56,10 @@
             "12": "G4",
             "13": "G4",
             "14": "G4",
-            "15": "G5",
+            "15": "G4",
             "16": "G5",
-            "17": "G6"
+            "17": "G5",
+            "18": "G6"
           },
           "notes": {
             "0": [
@@ -77,7 +78,8 @@
           "cells": {
             "11": "G5",
             "12": "G5",
-            "13": "G6"
+            "13": "G5",
+            "14": "G6"
           },
           "notes": {},
           "link": "https://mi-cost-dashboard.vercel.app/"
@@ -261,5 +263,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789496158668
+  "updatedAt": 1789496248067
 }
