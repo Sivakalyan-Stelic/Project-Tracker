@@ -246,7 +246,7 @@
         },
         {
           "id": "proj_vnmkw",
-          "name": "New initiative",
+          "name": "Graphic Schedule",
           "resource": "Muhammad + Siva",
           "cells": {
             "14": "G1"
@@ -285,5 +285,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789499598695
+  "updatedAt": 1789499627859
 }
