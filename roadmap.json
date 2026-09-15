@@ -200,18 +200,17 @@
           "cells": {
             "13": "G1",
             "14": "G1",
-            "15": "G1",
-            "16": "G2",
+            "15": "G2",
+            "16": "G3",
             "17": "G3",
             "18": "G3",
-            "19": "G3",
+            "19": "G4",
             "20": "G4",
             "21": "G4",
-            "22": "G4",
+            "22": "G5",
             "23": "G5",
             "24": "G5",
-            "25": "G5",
-            "26": "G6"
+            "25": "G6"
           },
           "notes": {
             "13": [
@@ -242,6 +241,15 @@
             "27": "G5",
             "28": "G5",
             "29": "G6"
+          },
+          "notes": {}
+        },
+        {
+          "id": "proj_vnmkw",
+          "name": "New initiative",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "14": "G1"
           },
           "notes": {}
         }
@@ -277,5 +285,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789499552438
+  "updatedAt": 1789499598695
 }
