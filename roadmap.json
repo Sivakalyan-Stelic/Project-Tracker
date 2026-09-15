@@ -43,28 +43,28 @@
           "name": "Amgen",
           "resource": "Muhammed + Siva",
           "cells": {
-            "0": "G1",
-            "1": "G2",
-            "2": "G2",
-            "3": "G3",
-            "4": "HOLD",
-            "5": "HOLD",
+            "2": "G1",
+            "3": "G2",
+            "4": "G2",
+            "5": "G3",
             "6": "HOLD",
             "7": "HOLD",
-            "8": "G4",
-            "9": "G4",
+            "8": "HOLD",
+            "9": "HOLD",
             "10": "G4",
             "11": "G4",
             "12": "G4",
             "13": "G4",
             "14": "G4",
             "15": "G4",
-            "16": "G5",
-            "17": "G5",
-            "18": "G6"
+            "16": "G4",
+            "17": "G4",
+            "18": "G5",
+            "19": "G5",
+            "20": "G6"
           },
           "notes": {
-            "0": [
+            "2": [
               {
                 "text": "This is testing",
                 "ts": 1787944684025
@@ -266,5 +266,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789497867451
+  "updatedAt": 1789498980369
 }
