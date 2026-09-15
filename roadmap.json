@@ -69,6 +69,10 @@
               {
                 "text": "This is testing",
                 "ts": 1787944684025
+              },
+              {
+                "text": "This is a second comment",
+                "ts": 1789499003165
               }
             ]
           },
@@ -267,5 +271,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789498985204
+  "updatedAt": 1789499003172
 }
