@@ -54,9 +54,11 @@
             "10": "G4",
             "11": "G4",
             "12": "G4",
-            "13": "G5",
-            "14": "G5",
-            "15": "G6"
+            "13": "G4",
+            "14": "G4",
+            "15": "G5",
+            "16": "G5",
+            "17": "G6"
           },
           "notes": {
             "0": [
@@ -259,5 +261,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789496157710
+  "updatedAt": 1789496158668
 }
