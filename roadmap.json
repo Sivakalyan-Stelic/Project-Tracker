@@ -40,7 +40,7 @@
       "projects": [
         {
           "id": "amgen",
-          "name": "Amgen",
+          "name": "Amgen (Billable)",
           "resource": "Muhammed + Siva",
           "cells": {
             "2": "G1",
@@ -297,5 +297,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789500035169
+  "updatedAt": 1789500057330
 }
