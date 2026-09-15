@@ -250,7 +250,8 @@
           "resource": "Muhammad + Siva",
           "cells": {
             "12": "G1",
-            "13": "G2"
+            "13": "G2",
+            "14": "G3"
           },
           "notes": {}
         }
@@ -286,5 +287,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789499658139
+  "updatedAt": 1789499660533
 }
