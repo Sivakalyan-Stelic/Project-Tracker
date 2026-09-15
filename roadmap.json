@@ -184,7 +184,14 @@
             "18": "G5",
             "19": "G6"
           },
-          "notes": {}
+          "notes": {
+            "11": [
+              {
+                "text": "We need Predecessor and Sucessor",
+                "ts": 1789499508174
+              }
+            ]
+          }
         },
         {
           "id": "scansca",
@@ -271,5 +278,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789499003172
+  "updatedAt": 1789499508182
 }
