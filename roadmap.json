@@ -39,19 +39,6 @@
       "title": "Dashboard delivery roadmap",
       "projects": [
         {
-          "id": "oracle",
-          "name": "Oracle",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "11": "G5",
-            "12": "G5",
-            "13": "G5",
-            "14": "G6"
-          },
-          "notes": {},
-          "link": "https://mi-cost-dashboard.vercel.app/"
-        },
-        {
           "id": "amgen",
           "name": "Amgen (Billable)",
           "resource": "Muhammed + Siva",
@@ -90,6 +77,19 @@
             ]
           },
           "link": "https://amgen.stelic.io/"
+        },
+        {
+          "id": "oracle",
+          "name": "Oracle",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "11": "G5",
+            "12": "G5",
+            "13": "G5",
+            "14": "G6"
+          },
+          "notes": {},
+          "link": "https://mi-cost-dashboard.vercel.app/"
         },
         {
           "id": "eas",
@@ -291,5 +291,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789657899565
+  "updatedAt": 1789657919198
 }
