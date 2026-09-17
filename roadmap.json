@@ -39,6 +39,19 @@
       "title": "Dashboard delivery roadmap",
       "projects": [
         {
+          "id": "oracle",
+          "name": "Oracle",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "11": "G5",
+            "12": "G5",
+            "13": "G5",
+            "14": "G6"
+          },
+          "notes": {},
+          "link": "https://mi-cost-dashboard.vercel.app/"
+        },
+        {
           "id": "amgen",
           "name": "Amgen (Billable)",
           "resource": "Muhammed + Siva",
@@ -77,19 +90,6 @@
             ]
           },
           "link": "https://amgen.stelic.io/"
-        },
-        {
-          "id": "oracle",
-          "name": "Oracle",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "11": "G5",
-            "12": "G5",
-            "13": "G5",
-            "14": "G6"
-          },
-          "notes": {},
-          "link": "https://mi-cost-dashboard.vercel.app/"
         },
         {
           "id": "eas",
@@ -264,16 +264,10 @@
             "24": "G6"
           },
           "notes": {}
-        }
-      ]
-    },
-    {
-      "id": "migration",
-      "title": "Dashboard migration (SharePoint to HTML)",
-      "projects": [
+        },
         {
-          "id": "google",
-          "name": "Google (BIllable)",
+          "id": "proj_amejd",
+          "name": "Dashboard migration (SharePoint to HTML)",
           "resource": "",
           "cells": {
             "13": "G1",
@@ -297,5 +291,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789500182950
+  "updatedAt": 1789657841917
 }
