@@ -127,7 +127,8 @@
             "10": "G5",
             "11": "G6"
           },
-          "notes": {}
+          "notes": {},
+          "link": "https://stelicpublicstoragedashboard0916.vercel.app/"
         },
         {
           "id": "miller",
@@ -291,5 +292,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789663959468
+  "updatedAt": 1789749524636
 }
