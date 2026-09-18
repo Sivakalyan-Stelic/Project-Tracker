@@ -146,7 +146,8 @@
             "18": "G5",
             "19": "G6"
           },
-          "notes": {}
+          "notes": {},
+          "link": "https://millerdashboard.vercel.app/"
         },
         {
           "id": "stelicint",
@@ -292,5 +293,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1789749524636
+  "updatedAt": 1789749800923
 }
