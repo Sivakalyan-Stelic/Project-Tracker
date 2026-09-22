@@ -290,6 +290,27 @@
           "notes": {}
         },
         {
+          "id": "proj_amejd_copy_cbg1",
+          "name": "Dashboard migration (SharePoint to HTML) (copy)",
+          "resource": "",
+          "cells": {
+            "13": "G1",
+            "14": "G1",
+            "15": "G2",
+            "16": "G3",
+            "17": "G3",
+            "18": "G3",
+            "19": "G4",
+            "20": "G4",
+            "21": "G4",
+            "22": "G5",
+            "23": "G5",
+            "24": "G5",
+            "25": "G6"
+          },
+          "notes": {}
+        },
+        {
           "id": "proj_qu0tx",
           "name": "Google",
           "resource": "Muhammad + Siva",
@@ -303,5 +324,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790102435459
+  "updatedAt": 1790102446583
 }
