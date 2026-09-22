@@ -316,20 +316,11 @@
             "25": "G6"
           },
           "notes": {}
-        },
-        {
-          "id": "proj_qu0tx",
-          "name": "Google",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "15": "G1"
-          },
-          "notes": {}
         }
       ]
     }
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790102493365
+  "updatedAt": 1790102503599
 }
