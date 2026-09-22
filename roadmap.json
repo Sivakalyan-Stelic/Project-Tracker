@@ -174,28 +174,6 @@
           }
         },
         {
-          "id": "stelicint",
-          "name": "Stelic Internal",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "17": "G1",
-            "18": "G1",
-            "19": "G1",
-            "20": "G2",
-            "21": "G3",
-            "22": "G3",
-            "23": "G3",
-            "24": "G3",
-            "25": "G4",
-            "26": "G4",
-            "27": "G4",
-            "28": "G5",
-            "29": "G5",
-            "30": "G6"
-          },
-          "notes": {}
-        },
-        {
           "id": "proj_amejd_copy_cbg1",
           "name": "Google",
           "resource": "",
@@ -216,6 +194,28 @@
           },
           "notes": {},
           "link": "https://google-eight-teal.vercel.app/"
+        },
+        {
+          "id": "stelicint",
+          "name": "Stelic Internal",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "17": "G1",
+            "18": "G1",
+            "19": "G1",
+            "20": "G2",
+            "21": "G3",
+            "22": "G3",
+            "23": "G3",
+            "24": "G3",
+            "25": "G4",
+            "26": "G4",
+            "27": "G4",
+            "28": "G5",
+            "29": "G5",
+            "30": "G6"
+          },
+          "notes": {}
         },
         {
           "id": "scansca",
@@ -325,5 +325,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790102475789
+  "updatedAt": 1790102477754
 }
