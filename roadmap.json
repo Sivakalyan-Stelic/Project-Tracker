@@ -308,7 +308,8 @@
             "24": "G5",
             "25": "G6"
           },
-          "notes": {}
+          "notes": {},
+          "link": "https://google-eight-teal.vercel.app/"
         },
         {
           "id": "proj_qu0tx",
@@ -324,5 +325,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790102455898
+  "updatedAt": 1790102463263
 }
