@@ -112,25 +112,6 @@
           "link": "https://stelicpublicstoragedashboard0916.vercel.app/"
         },
         {
-          "id": "eas",
-          "name": "EAS",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "10": "G1",
-            "11": "G2",
-            "12": "G3",
-            "13": "G3",
-            "14": "G3",
-            "15": "G4",
-            "16": "G4",
-            "17": "G4",
-            "18": "G5",
-            "19": "G5",
-            "20": "G6"
-          },
-          "notes": {}
-        },
-        {
           "id": "miller",
           "name": "Miller",
           "resource": "Muhammad + Siva",
@@ -148,6 +129,25 @@
           },
           "notes": {},
           "link": "https://millerdashboard.vercel.app/"
+        },
+        {
+          "id": "eas",
+          "name": "EAS",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "10": "G1",
+            "11": "G2",
+            "12": "G3",
+            "13": "G3",
+            "14": "G3",
+            "15": "G4",
+            "16": "G4",
+            "17": "G4",
+            "18": "G5",
+            "19": "G5",
+            "20": "G6"
+          },
+          "notes": {}
         },
         {
           "id": "schedviewer",
@@ -325,5 +325,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790102482185
+  "updatedAt": 1790102484206
 }
