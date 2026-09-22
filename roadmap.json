@@ -92,25 +92,6 @@
           "link": "https://mi-cost-dashboard.vercel.app/"
         },
         {
-          "id": "eas",
-          "name": "EAS",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "10": "G1",
-            "11": "G2",
-            "12": "G3",
-            "13": "G3",
-            "14": "G3",
-            "15": "G4",
-            "16": "G4",
-            "17": "G4",
-            "18": "G5",
-            "19": "G5",
-            "20": "G6"
-          },
-          "notes": {}
-        },
-        {
           "id": "pubstor",
           "name": "Public Storage",
           "resource": "Muhammad + Siva",
@@ -129,6 +110,25 @@
           },
           "notes": {},
           "link": "https://stelicpublicstoragedashboard0916.vercel.app/"
+        },
+        {
+          "id": "eas",
+          "name": "EAS",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "10": "G1",
+            "11": "G2",
+            "12": "G3",
+            "13": "G3",
+            "14": "G3",
+            "15": "G4",
+            "16": "G4",
+            "17": "G4",
+            "18": "G5",
+            "19": "G5",
+            "20": "G6"
+          },
+          "notes": {}
         },
         {
           "id": "miller",
@@ -325,5 +325,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790102477754
+  "updatedAt": 1790102482185
 }
