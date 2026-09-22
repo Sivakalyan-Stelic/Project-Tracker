@@ -225,6 +225,28 @@
           "link": "https://skanskadashboard.vercel.app/"
         },
         {
+          "id": "proj_amejd_copy_cbg1",
+          "name": "Google",
+          "resource": "",
+          "cells": {
+            "13": "G1",
+            "14": "G1",
+            "15": "G2",
+            "16": "G3",
+            "17": "G3",
+            "18": "G3",
+            "19": "G4",
+            "20": "G4",
+            "21": "G4",
+            "22": "G5",
+            "23": "G5",
+            "24": "G5",
+            "25": "G6"
+          },
+          "notes": {},
+          "link": "https://google-eight-teal.vercel.app/"
+        },
+        {
           "id": "clayco",
           "name": "Clayco",
           "resource": "Muhammad + Siva",
@@ -246,28 +268,6 @@
             "29": "G6"
           },
           "notes": {}
-        },
-        {
-          "id": "proj_amejd_copy_cbg1",
-          "name": "Google",
-          "resource": "",
-          "cells": {
-            "13": "G1",
-            "14": "G1",
-            "15": "G2",
-            "16": "G3",
-            "17": "G3",
-            "18": "G3",
-            "19": "G4",
-            "20": "G4",
-            "21": "G4",
-            "22": "G5",
-            "23": "G5",
-            "24": "G5",
-            "25": "G6"
-          },
-          "notes": {},
-          "link": "https://google-eight-teal.vercel.app/"
         },
         {
           "id": "proj_vnmkw",
@@ -325,5 +325,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790102466527
+  "updatedAt": 1790102468470
 }
