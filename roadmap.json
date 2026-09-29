@@ -96,7 +96,7 @@
         },
         {
           "id": "oracle",
-          "name": "Oracle",
+          "name": "Oracle (Cost)",
           "resource": "Muhammad + Siva",
           "cells": {
             "13": "G5",
@@ -315,5 +315,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790709192043
+  "updatedAt": 1790709308688
 }
