@@ -210,7 +210,8 @@
             "25": "G5",
             "26": "G6"
           },
-          "notes": {}
+          "notes": {},
+          "link": "https://stelic-project-center.vercel.app"
         },
         {
           "id": "scansca",
@@ -313,5 +314,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790707093935
+  "updatedAt": 1790707937140
 }
