@@ -64,14 +64,7 @@
             "20": "G5",
             "21": "G6"
           },
-          "notes": {
-            "2": [
-              {
-                "text": "This is testing",
-                "ts": 1787944684025
-              }
-            ]
-          },
+          "notes": {},
           "link": "https://amgen.stelic.io/"
         },
         {
@@ -320,5 +313,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790699831416
+  "updatedAt": 1790699833912
 }
