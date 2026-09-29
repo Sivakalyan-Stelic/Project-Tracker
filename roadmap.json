@@ -129,16 +129,16 @@
           "name": "Miller",
           "resource": "Muhammad + Siva",
           "cells": {
-            "10": "G1",
-            "11": "G2",
-            "12": "G2",
-            "13": "G3",
-            "14": "G3",
-            "15": "G4",
-            "16": "G4",
-            "17": "G5",
-            "18": "G5",
-            "19": "G6"
+            "13": "G1",
+            "14": "G2",
+            "15": "G2",
+            "16": "G3",
+            "17": "G3",
+            "18": "G4",
+            "19": "G4",
+            "20": "G5",
+            "21": "G5",
+            "22": "G6"
           },
           "notes": {},
           "link": "https://millerdashboard.vercel.app/"
@@ -329,5 +329,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790696421943
+  "updatedAt": 1790696472422
 }
