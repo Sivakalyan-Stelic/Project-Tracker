@@ -122,7 +122,7 @@
         },
         {
           "id": "oracle_copy_67mx_copy_7woy",
-          "name": "Oracle (Barn)",
+          "name": "Oracle (",
           "resource": "Muhammad + Siva",
           "cells": {
             "13": "G5",
@@ -341,5 +341,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790709440258
+  "updatedAt": 1790709455833
 }
