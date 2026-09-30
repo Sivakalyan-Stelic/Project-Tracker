@@ -134,25 +134,6 @@
           "link": "https://mi-cost-dashboard.vercel.app/"
         },
         {
-          "id": "miller",
-          "name": "Miller",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "15": "G1",
-            "16": "G2",
-            "17": "G2",
-            "18": "G3",
-            "19": "G3",
-            "20": "G4",
-            "21": "G4",
-            "22": "G5",
-            "23": "G5",
-            "24": "G6"
-          },
-          "notes": {},
-          "link": "https://millerdashboard.vercel.app/"
-        },
-        {
           "id": "schedviewer",
           "name": "Schedule Viewer",
           "resource": "Muhammad + Siva",
@@ -176,6 +157,25 @@
             ]
           },
           "link": "https://stelic-schedule-viewer.vercel.app/"
+        },
+        {
+          "id": "miller",
+          "name": "Miller",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "15": "G1",
+            "16": "G2",
+            "17": "G2",
+            "18": "G3",
+            "19": "G3",
+            "20": "G4",
+            "21": "G4",
+            "22": "G5",
+            "23": "G5",
+            "24": "G6"
+          },
+          "notes": {},
+          "link": "https://millerdashboard.vercel.app/"
         },
         {
           "id": "eas",
@@ -341,5 +341,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790800675940
+  "updatedAt": 1790800677946
 }
