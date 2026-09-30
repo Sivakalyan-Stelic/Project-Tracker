@@ -178,25 +178,6 @@
           "link": "https://millerdashboard.vercel.app/"
         },
         {
-          "id": "eas",
-          "name": "EAS",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "15": "G1",
-            "16": "G2",
-            "17": "G3",
-            "18": "G3",
-            "19": "G3",
-            "20": "G4",
-            "21": "G4",
-            "22": "G4",
-            "23": "G5",
-            "24": "G5",
-            "25": "G6"
-          },
-          "notes": {}
-        },
-        {
           "id": "proj_amejd_copy_cbg1",
           "name": "Google",
           "resource": "",
@@ -217,6 +198,25 @@
           },
           "notes": {},
           "link": "https://google-eight-teal.vercel.app/"
+        },
+        {
+          "id": "eas",
+          "name": "EAS",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "15": "G1",
+            "16": "G2",
+            "17": "G3",
+            "18": "G3",
+            "19": "G3",
+            "20": "G4",
+            "21": "G4",
+            "22": "G4",
+            "23": "G5",
+            "24": "G5",
+            "25": "G6"
+          },
+          "notes": {}
         },
         {
           "id": "proj_vnmkw",
@@ -341,5 +341,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790800684949
+  "updatedAt": 1790800698385
 }
