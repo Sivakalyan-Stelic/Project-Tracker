@@ -63,14 +63,7 @@
             "17": "G5",
             "18": "G6"
           },
-          "notes": {
-            "1": [
-              {
-                "text": "This is a comment",
-                "ts": 1790866245279
-              }
-            ]
-          },
+          "notes": {},
           "link": "https://stelicpublicstoragedashboard0916.vercel.app/"
         },
         {
@@ -349,5 +342,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790866245288
+  "updatedAt": 1790866290172
 }
