@@ -45,14 +45,14 @@
           "resource": "Muhammad + Siva",
           "cells": {
             "1": "G1",
-            "2": "HOLD",
-            "3": "G2",
+            "2": "G2",
+            "3": "G3",
             "4": "G3",
-            "5": "G3",
+            "5": "HOLD",
             "6": "HOLD",
-            "7": "HOLD",
+            "7": "G4",
             "8": "G4",
-            "9": "G4",
+            "9": "G5",
             "10": "G5",
             "11": "G5",
             "12": "G5",
@@ -61,8 +61,7 @@
             "15": "G5",
             "16": "G5",
             "17": "G5",
-            "18": "G5",
-            "19": "G6"
+            "18": "G6"
           },
           "notes": {},
           "link": "https://stelicpublicstoragedashboard0916.vercel.app/"
@@ -343,5 +342,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790866172961
+  "updatedAt": 1790866175249
 }
