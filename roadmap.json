@@ -42,7 +42,7 @@
         {
           "id": "pubstor",
           "name": "Public Storage",
-          "resource": "Muhammad + Siva",
+          "resource": "Muhammad + SIva",
           "cells": {
             "1": "G1",
             "2": "G2",
@@ -342,5 +342,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1790866197718
+  "updatedAt": 1790866235443
 }
