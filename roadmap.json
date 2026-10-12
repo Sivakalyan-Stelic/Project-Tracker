@@ -368,20 +368,20 @@
           "name": "Dashboard migration (SharePoint to HTML)",
           "resource": "",
           "cells": {
-            "18": "HOLD",
-            "19": "G1",
-            "20": "G1",
-            "21": "G2",
-            "22": "G3",
-            "23": "G3",
+            "20": "HOLD",
+            "21": "G1",
+            "22": "G1",
+            "23": "G2",
             "24": "G3",
-            "25": "G4",
-            "26": "G4",
+            "25": "G3",
+            "26": "G3",
             "27": "G4",
-            "28": "G5",
-            "29": "G5",
+            "28": "G4",
+            "29": "G4",
             "30": "G5",
-            "31": "G6"
+            "31": "G5",
+            "32": "G5",
+            "33": "G6"
           },
           "notes": {}
         }
@@ -390,5 +390,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833607190
+  "updatedAt": 1791833611467
 }
