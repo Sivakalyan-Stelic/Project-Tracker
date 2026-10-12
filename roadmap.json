@@ -312,6 +312,7 @@
           "name": "Clayco",
           "resource": "Muhammad + Siva",
           "cells": {
+            "18": "HOLD",
             "19": "G1",
             "20": "G1",
             "21": "G1",
@@ -356,5 +357,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791818865472
+  "updatedAt": 1791818876884
 }
