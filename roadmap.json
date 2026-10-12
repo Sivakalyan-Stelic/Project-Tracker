@@ -135,6 +135,7 @@
           "cells": {
             "3": "G1",
             "4": "G1",
+            "5": "G2",
             "13": "G5",
             "14": "G5",
             "15": "G5",
@@ -371,5 +372,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833442457
+  "updatedAt": 1791833445310
 }
