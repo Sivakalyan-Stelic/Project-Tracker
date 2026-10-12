@@ -291,29 +291,6 @@
           "link": "https://skanskadashboard.vercel.app/"
         },
         {
-          "id": "stelicint",
-          "name": "Stelic Internal",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "20": "HOLD",
-            "21": "G1",
-            "22": "G1",
-            "23": "G1",
-            "24": "G2",
-            "25": "G3",
-            "26": "G3",
-            "27": "G3",
-            "28": "G3",
-            "29": "G4",
-            "30": "G4",
-            "31": "G4",
-            "32": "G5",
-            "33": "G5",
-            "34": "G6"
-          },
-          "notes": {}
-        },
-        {
           "id": "schedviewer",
           "name": "Schedule Viewer",
           "resource": "Muhammad + Siva",
@@ -337,6 +314,29 @@
             ]
           },
           "link": "https://stelic-schedule-viewer.vercel.app/"
+        },
+        {
+          "id": "stelicint",
+          "name": "Stelic Internal",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "20": "HOLD",
+            "21": "G1",
+            "22": "G1",
+            "23": "G1",
+            "24": "G2",
+            "25": "G3",
+            "26": "G3",
+            "27": "G3",
+            "28": "G3",
+            "29": "G4",
+            "30": "G4",
+            "31": "G4",
+            "32": "G5",
+            "33": "G5",
+            "34": "G6"
+          },
+          "notes": {}
         },
         {
           "id": "clayco",
@@ -389,5 +389,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833591558
+  "updatedAt": 1791833599435
 }
