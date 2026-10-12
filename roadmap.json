@@ -133,10 +133,10 @@
           "name": "Oracle (Cost)",
           "resource": "Muhammad + Siva",
           "cells": {
-            "13": "G5",
-            "14": "G5",
-            "15": "G5",
-            "16": "G6"
+            "18": "G5",
+            "19": "G5",
+            "20": "G5",
+            "21": "G6"
           },
           "notes": {},
           "link": "https://mi-cost-dashboard.vercel.app/"
@@ -350,5 +350,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791818520387
+  "updatedAt": 1791818533398
 }
