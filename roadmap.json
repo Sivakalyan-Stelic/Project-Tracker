@@ -292,14 +292,7 @@
             "24": "G5",
             "25": "G6"
           },
-          "notes": {
-            "17": [
-              {
-                "text": "We need Predecessor and Sucessor",
-                "ts": 1789499508174
-              }
-            ]
-          },
+          "notes": {},
           "link": "https://dashboard-template-builder.vercel.app"
         },
         {
@@ -401,5 +394,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833968174
+  "updatedAt": 1791833975319
 }
