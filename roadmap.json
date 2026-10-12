@@ -274,14 +274,7 @@
             "28": "G5",
             "29": "G6"
           },
-          "notes": {
-            "15": [
-              {
-                "text": "Initial Mock-up Created",
-                "ts": 1789406732689
-              }
-            ]
-          },
+          "notes": {},
           "link": "https://skanskadashboard.vercel.app/"
         },
         {
@@ -408,5 +401,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833966283
+  "updatedAt": 1791833968174
 }
