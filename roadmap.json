@@ -293,7 +293,7 @@
         },
         {
           "id": "schedviewer_copy_ko3i",
-          "name": "Schedule Viewer (copy)",
+          "name": "Template Builder",
           "resource": "Muhammad + Siva",
           "cells": {
             "17": "G1",
@@ -415,5 +415,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833669594
+  "updatedAt": 1791833694830
 }
