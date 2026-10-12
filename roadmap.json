@@ -176,19 +176,6 @@
           "link": "https://google-eight-teal.vercel.app/"
         },
         {
-          "id": "oracle_copy_67mx_copy_7woy",
-          "name": "Oracle (Milestone Tracking)",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "13": "G5",
-            "14": "G5",
-            "15": "G5",
-            "16": "G6"
-          },
-          "notes": {},
-          "link": "https://mi-cost-dashboard.vercel.app/"
-        },
-        {
           "id": "proj_vnmkw",
           "name": "Graphic Schedule",
           "resource": "Muhammad + Siva",
@@ -209,6 +196,19 @@
           },
           "notes": {},
           "link": "https://stelic-project-center.vercel.app"
+        },
+        {
+          "id": "oracle_copy_67mx_copy_7woy",
+          "name": "Oracle (Milestone Tracking)",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "13": "G5",
+            "14": "G5",
+            "15": "G5",
+            "16": "G6"
+          },
+          "notes": {},
+          "link": "https://mi-cost-dashboard.vercel.app/"
         },
         {
           "id": "miller",
@@ -349,5 +349,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791818712500
+  "updatedAt": 1791818716649
 }
