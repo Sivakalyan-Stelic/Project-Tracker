@@ -292,8 +292,8 @@
           "link": "https://skanskadashboard.vercel.app/"
         },
         {
-          "id": "schedviewer",
-          "name": "Schedule Viewer",
+          "id": "schedviewer_copy_ko3i",
+          "name": "Schedule Viewer (copy)",
           "resource": "Muhammad + Siva",
           "cells": {
             "19": "G1",
@@ -317,8 +317,8 @@
           "link": "https://stelic-schedule-viewer.vercel.app/"
         },
         {
-          "id": "schedviewer_copy_ko3i",
-          "name": "Schedule Viewer (copy)",
+          "id": "schedviewer",
+          "name": "Schedule Viewer",
           "resource": "Muhammad + Siva",
           "cells": {
             "19": "G1",
@@ -415,5 +415,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833654063
+  "updatedAt": 1791833659078
 }
