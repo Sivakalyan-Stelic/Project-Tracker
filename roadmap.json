@@ -239,31 +239,6 @@
           "link": "https://millerdashboard.vercel.app/"
         },
         {
-          "id": "schedviewer",
-          "name": "Schedule Viewer",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "19": "G1",
-            "20": "G2",
-            "21": "G2",
-            "22": "G3",
-            "23": "G4",
-            "24": "G4",
-            "25": "G5",
-            "26": "G5",
-            "27": "G6"
-          },
-          "notes": {
-            "19": [
-              {
-                "text": "We need Predecessor and Sucessor",
-                "ts": 1789499508174
-              }
-            ]
-          },
-          "link": "https://stelic-schedule-viewer.vercel.app/"
-        },
-        {
           "id": "eas",
           "name": "EAS",
           "resource": "Muhammad + Siva",
@@ -313,6 +288,31 @@
             ]
           },
           "link": "https://skanskadashboard.vercel.app/"
+        },
+        {
+          "id": "schedviewer",
+          "name": "Schedule Viewer",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "19": "G1",
+            "20": "G2",
+            "21": "G2",
+            "22": "G3",
+            "23": "G4",
+            "24": "G4",
+            "25": "G5",
+            "26": "G5",
+            "27": "G6"
+          },
+          "notes": {
+            "19": [
+              {
+                "text": "We need Predecessor and Sucessor",
+                "ts": 1789499508174
+              }
+            ]
+          },
+          "link": "https://stelic-schedule-viewer.vercel.app/"
         },
         {
           "id": "stelicint",
@@ -388,5 +388,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833537078
+  "updatedAt": 1791833547862
 }
