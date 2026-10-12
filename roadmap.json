@@ -118,6 +118,19 @@
           "link": "https://mi-cost-dashboard.vercel.app/"
         },
         {
+          "id": "oracle_copy_67mx",
+          "name": "Oracle (Schedule)",
+          "resource": "Muhammad + Siva",
+          "cells": {
+            "13": "G5",
+            "14": "G5",
+            "15": "G5",
+            "16": "G6"
+          },
+          "notes": {},
+          "link": "https://mi-cost-dashboard.vercel.app/"
+        },
+        {
           "id": "schedviewer",
           "name": "Schedule Viewer",
           "resource": "Muhammad + Siva",
@@ -141,19 +154,6 @@
             ]
           },
           "link": "https://stelic-schedule-viewer.vercel.app/"
-        },
-        {
-          "id": "oracle_copy_67mx",
-          "name": "Oracle (Schedule)",
-          "resource": "Muhammad + Siva",
-          "cells": {
-            "13": "G5",
-            "14": "G5",
-            "15": "G5",
-            "16": "G6"
-          },
-          "notes": {},
-          "link": "https://mi-cost-dashboard.vercel.app/"
         },
         {
           "id": "oracle_copy_67mx_copy_7woy",
@@ -359,5 +359,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791818957290
+  "updatedAt": 1791818963212
 }
