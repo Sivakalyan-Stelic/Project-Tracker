@@ -108,18 +108,18 @@
           "name": "Schedule Viewer",
           "resource": "Muhammad + Siva",
           "cells": {
-            "18": "G1",
-            "19": "G2",
+            "19": "G1",
             "20": "G2",
-            "21": "G3",
-            "22": "G4",
+            "21": "G2",
+            "22": "G3",
             "23": "G4",
-            "24": "G5",
+            "24": "G4",
             "25": "G5",
-            "26": "G6"
+            "26": "G5",
+            "27": "G6"
           },
           "notes": {
-            "18": [
+            "19": [
               {
                 "text": "We need Predecessor and Sucessor",
                 "ts": 1789499508174
@@ -350,5 +350,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791818512995
+  "updatedAt": 1791818520387
 }
