@@ -177,6 +177,7 @@
           "name": "Schedule Viewer",
           "resource": "Muhammad + Siva",
           "cells": {
+            "11": "G1",
             "19": "G1",
             "20": "G2",
             "21": "G2",
@@ -388,5 +389,5 @@
   ],
   "notesText": "We can start the next project once we clear Stage Gate 3.",
   "currentWeekIso": "2026-08-24",
-  "updatedAt": 1791833498378
+  "updatedAt": 1791833507691
 }
