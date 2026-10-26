@@ -866,7 +866,7 @@ function startViewerPolling(){
         fillGaps(latest.sections); state=latest; render();
       }
     }catch(e){}
-  }, MODE==="github" ? 60000 : 20000);
+  }, MODE==="github" ? 60000 : 120000);
 }
 
 /* ---------- Project helpers ---------- */
