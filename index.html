@@ -716,7 +716,7 @@ function saveState(){
 
 async function fetchState(){
   const ctrl=new AbortController();
-  const t=setTimeout(()=>ctrl.abort(), 3000);
+  const t=setTimeout(()=>ctrl.abort(), 60000);
   try{
     const r=await fetch("/api/state",{headers:adminHeaders(), signal:ctrl.signal, cache:"no-store"});
     clearTimeout(t);
