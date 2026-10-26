@@ -5,11 +5,13 @@
 // GET  /api/state?check=1   -> health check: env vars, warehouse, table, row (no secrets shown)
 //
 // Vercel environment variables:
-//   ADMIN_PASSWORD           edit password                                     (required)
-//   DATABRICKS_HOST          server hostname, e.g. dbc-1234.cloud.databricks.com (required)
-//   DATABRICKS_TOKEN         access token with the sql scope                     (required)
-//   DATABRICKS_WAREHOUSE_ID  last segment of the warehouse HTTP path             (required)
+//   ADMIN_PASSWORD           edit password                                       (required)
+//   DATABRICKS_HOST          server hostname, e.g. dbc-1234.cloud.databricks.com   (required)
+//   DATABRICKS_TOKEN         access token with the sql scope                       (required)
+//   DATABRICKS_WAREHOUSE_ID  last segment of the warehouse HTTP path               (required)
 //   DATABRICKS_TABLE         defaults to workspace.stelic_projects.roadmap_state
+//
+// Table layout: id STRING, payload STRING (the whole roadmap JSON), updated_at TIMESTAMP
 
 const PASSWORD  = (process.env.ADMIN_PASSWORD || '').trim();
 const HOST      = (process.env.DATABRICKS_HOST || '').trim().replace(/^https?:\/\//i, '').replace(/\/+$/, '');
@@ -19,7 +21,7 @@ const TABLE     = (process.env.DATABRICKS_TABLE || 'workspace.stelic_projects.ro
 const ROW_ID    = 'main';
 
 const STATEMENTS_URL = `https://${HOST}/api/2.0/sql/statements`;
-const MAX_WAIT_MS = 50000; // total time to wait for a statement, including warehouse start
+const MAX_WAIT_MS = 50000; // total wait per statement, including warehouse start up
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
@@ -27,6 +29,29 @@ class DbxError extends Error {
   constructor(message, status) { super(message); this.status = status || 500; }
 }
 
+/* ---------- Data cleanup ----------
+   Keeps the roadmap in the exact shape the page expects:
+   dates as YYYY-MM-DD, and no null entries in cells or notes
+   (a null cell would make a project look like it spans every week). */
+function normalizeState(s) {
+  if (!s || typeof s !== 'object') return s;
+  const day = v => (typeof v === 'string' ? v.slice(0, 10) : v);
+  const clean = o => {
+    const out = {};
+    for (const k in (o || {})) if (o[k] != null) out[k] = o[k];
+    return out;
+  };
+  if (Array.isArray(s.weeks)) s.weeks = s.weeks.map(day);
+  if (s.currentWeekIso) s.currentWeekIso = day(s.currentWeekIso);
+  (s.sections || []).forEach(sec => (sec.projects || []).forEach(p => {
+    p.cells = clean(p.cells);
+    p.notes = clean(p.notes);
+    if (p.link == null) delete p.link;
+  }));
+  return s;
+}
+
+/* ---------- Databricks SQL ---------- */
 function dbxHeaders() {
   return { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' };
 }
@@ -91,11 +116,14 @@ async function dbGet() {
   ]);
   const row = d.result?.data_array?.[0];
   if (!row || row[0] == null) return null;
-  try { return JSON.parse(row[0]); }
+  let parsed;
+  try { parsed = JSON.parse(row[0]); }
   catch (e) { throw new DbxError('The stored roadmap is not valid JSON. Check the payload column in Databricks.', 500); }
+  return normalizeState(parsed);
 }
 
 async function dbPut(state) {
+  const clean = normalizeState(JSON.parse(JSON.stringify(state)));
   await dbx(
     `MERGE INTO ${TABLE} t
      USING (SELECT :id AS id, :payload AS payload) s
@@ -105,11 +133,12 @@ async function dbPut(state) {
        VALUES (s.id, s.payload, current_timestamp())`,
     [
       { name: 'id', value: ROW_ID, type: 'STRING' },
-      { name: 'payload', value: JSON.stringify(state), type: 'STRING' }
+      { name: 'payload', value: JSON.stringify(clean), type: 'STRING' }
     ]
   );
 }
 
+/* ---------- Request helpers ---------- */
 function isAuthorized(req) {
   const key = String(req.headers['x-admin-key'] || '').trim();
   return PASSWORD !== '' && key === PASSWORD;
@@ -154,7 +183,9 @@ async function healthCheck(res) {
     const row = d.result?.data_array?.[0];
     report.rowFound = !!row;
     if (row) { report.payloadBytes = Number(row[0]); report.updatedAt = row[1]; }
-    report.result = row ? 'OK: Databricks connected and roadmap row found.' : 'Connected, but no row with id = main. The first admin save will create it.';
+    report.result = row
+      ? 'OK: Databricks connected and roadmap row found.'
+      : 'Connected, but no row with id = main. The first admin save will create it.';
     return res.status(200).json(report);
   } catch (e) {
     report.result = e.message;
@@ -162,10 +193,11 @@ async function healthCheck(res) {
   }
 }
 
+/* ---------- Handler ---------- */
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
 
-  if (req.method === 'GET' && (req.query?.check !== undefined)) {
+  if (req.method === 'GET' && req.query && req.query.check !== undefined) {
     return healthCheck(res);
   }
 
